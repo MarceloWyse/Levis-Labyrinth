@@ -62,8 +62,8 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 #		animated_sprite_2d.play("jump_full")
 		if velocity.y > 0:
-			animated_sprite_2d.play("jump_full")
-#			animated_sprite_2d.play("jump")
+#			animated_sprite_2d.play("jump_full")
+			animated_sprite_2d.play("jump")
 		if velocity.y < 0:
 			animated_sprite_2d.play("fall")
 #		await get_tree().create_timer(0.4).timeout
