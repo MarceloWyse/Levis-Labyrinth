@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://let4mvfbhd1s"]
+
+[ext_resource type="PackedScene" uid="uid://c85ne3234n830" path="res://tile_map.tscn" id="1_mw0jb"]
+[ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="2_4mjdi"]
+[ext_resource type="PackedScene" uid="uid://dfmihe84doi2w" path="res://ui.tscn" id="3_4gdsw"]
+[ext_resource type="Script" path="res://Key.gd" id="4_smfdv"]
+[ext_resource type="Texture2D" uid="uid://c7iyho44hohwo" path="res://heart.png" id="5_j4qv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eka2h"]
+size = Vector2(9, 9.25)
+
+[node name="LevelTwo" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_mw0jb")]
+layer_0/tile_data = PackedInt32Array(589825, 0, 0, 589826, 65536, 0, 589827, 65536, 0, 589828, 65536, 0, 589829, 65536, 0, 589830, 65536, 0, 589831, 65536, 0, 589832, 65536, 0, 589833, 65536, 0, 589834, 65536, 0, 589835, 65536, 0, 589836, 65536, 0, 589837, 65536, 0, 589838, 65536, 0, 589839, 65536, 0, 589840, 65536, 0, 655361, 262144, 0, 655362, 262144, 0, 655363, 262144, 0, 655364, 262144, 0, 655365, 262144, 0, 655366, 262144, 0, 655367, 262144, 0, 655368, 262144, 0, 655369, 262144, 0, 655370, 262144, 0, 655371, 262144, 0, 655372, 262144, 0, 655373, 262144, 0, 655374, 262144, 0, 655375, 262144, 0, 655376, 262144, 0)
+
+[node name="Levi" parent="." instance=ExtResource("2_4mjdi")]
+position = Vector2(60, 143)
+
+[node name="UI" parent="." instance=ExtResource("3_4gdsw")]
+
+[node name="Heart3" type="Area2D" parent="."]
+position = Vector2(110, -2)
+collision_mask = 3
+script = ExtResource("4_smfdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heart3"]
+position = Vector2(43.5, 139.625)
+shape = SubResource("RectangleShape2D_eka2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Heart3"]
+position = Vector2(44, 140)
+texture = ExtResource("5_j4qv5")
+
+[connection signal="body_entered" from="Heart3" to="Heart3" method="_on_body_entered"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cne2vkbuko74n"]
+
+[ext_resource type="Texture2D" uid="uid://ddmg3hh7a2s8j" path="res://chrome_cZFsKcXdbQ.png" id="1_lpeib"]
+[ext_resource type="Script" path="res://dialogue.gd" id="1_n7ty1"]
+[ext_resource type="Texture2D" uid="uid://bs0miygo6buwn" path="res://button-Sheet.png" id="3_1bsts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w4gw"]
+atlas = ExtResource("3_1bsts")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vynp"]
+atlas = ExtResource("3_1bsts")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v01i0"]
+animations = [{
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_2w4gw")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3vynp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dialogue" type="Panel"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 255.0
+offset_bottom = 68.0
+script = ExtResource("1_n7ty1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 57.0
+texture = ExtResource("1_lpeib")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 6.0
+offset_right = 249.0
+offset_bottom = 59.0
+theme_override_font_sizes/normal_font_size = 8
+fit_content = true
+tab_size = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(240, 54)
+sprite_frames = SubResource("SpriteFrames_v01i0")
+frame_progress = 0.515651

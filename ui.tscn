@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfmihe84doi2w"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_82bdi"]
+[ext_resource type="PackedScene" uid="uid://ccrqgu7i5u3em" path="res://inventory.tscn" id="2_cc5jo"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_82bdi")
+
+[node name="Inventory" parent="." instance=ExtResource("2_cc5jo")]
+offset_left = 266.0
+offset_top = 5.0
+offset_right = 314.0
+offset_bottom = 21.0
+
+[editable path="Inventory"]

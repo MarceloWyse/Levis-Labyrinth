@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://w5oimrwf26ou"]
+
+[ext_resource type="Texture2D" uid="uid://cg5tbu62w1lk8" path="res://Alfy sprite idle.png" id="1_rcp01"]
+[ext_resource type="Script" path="res://alfy.gd" id="2_m5c88"]
+
+[sub_resource type="Animation" id="Animation_27485"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_manvr"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gprtt"]
+_data = {
+"RESET": SubResource("Animation_27485"),
+"idle": SubResource("Animation_manvr")
+}
+
+[node name="Alfy" type="Sprite2D"]
+texture = ExtResource("1_rcp01")
+hframes = 5
+script = ExtResource("2_m5c88")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_gprtt")
+}

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://be1vo647rn2rq"]
+
+[ext_resource type="Texture2D" uid="uid://dgigxrfbivjc1" path="res://time_bg.jpg" id="1_vw12c"]
+
+[node name="slot" type="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -304.0
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 15.0
+texture = ExtResource("1_vw12c")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -7.5
+offset_right = 7.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2

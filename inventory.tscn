@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccrqgu7i5u3em"]
+
+[ext_resource type="PackedScene" uid="uid://be1vo647rn2rq" path="res://slot.tscn" id="1_v651p"]
+
+[node name="Inventory" type="TextureRect"]
+custom_minimum_size = Vector2(48, 16)
+offset_right = 45.0
+offset_bottom = 15.0
+stretch_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(45, 15)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+columns = 3
+
+[node name="slot" parent="GridContainer" instance=ExtResource("1_v651p")]
+layout_mode = 2
+
+[node name="slot2" parent="GridContainer" instance=ExtResource("1_v651p")]
+layout_mode = 2
+
+[node name="slot3" parent="GridContainer" instance=ExtResource("1_v651p")]
+layout_mode = 2
