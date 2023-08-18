@@ -15,7 +15,7 @@ var medal = false
 var trophy = false
 
 const SPEED = 100.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -320.0
 
 func _physics_process(delta):
 
@@ -60,8 +60,13 @@ func _physics_process(delta):
 #
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		animated_sprite_2d.play("jump")
-		await get_tree().create_timer(0.4).timeout
+#		animated_sprite_2d.play("jump_full")
+		if velocity.y > 0:
+			animated_sprite_2d.play("jump_full")
+#			animated_sprite_2d.play("jump")
+		if velocity.y < 0:
+			animated_sprite_2d.play("fall")
+#		await get_tree().create_timer(0.4).timeout
 #		if Input.is_action_pressed("dash"):
 #			print("oie")
 #			global_position += Vector2(20,0)
