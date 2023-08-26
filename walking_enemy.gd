@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var hurtbox = $Hurtbox
-@onready var enemy_name = $"../UI/EnemyName"
-@onready var levi = $"../Levi"
+@onready var levi = $"../../Levi"
+@onready var enemy_name = $"../../UI/EnemyName"
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -14,33 +14,58 @@ var death = false
 var death_vfx = preload("res://death_effect.tscn")
 
 var speed = 10
-#var direction = 1
 var left_collided = false
 var right_collided = false
+var chasing = false
+#@onready var walker = $".."
+var pos = Vector2.ZERO
+var pos_valid = false
+
+func _ready():
+	pass
 
 func _process(delta):
+
+	if not chasing:
+		$AnimationPlayer.play("move")
+#		if pos_valid:
+#			walker.global_position = pos
+#			velocity.x = move_toward(global_position.x, walker.global_position.x, speed * delta)
+#			pos = Vector2.ZERO
+#			pos_valid = false
+
 	if ray_cast_left.is_colliding():
 #		animated_sprite_2d.scale.x = direction
-		velocity.x -= speed * delta
+#		velocity.x -= speed * delta
+#		position.x -= 1
 		animated_sprite_2d.flip_h = false
 		left_collided = true
+		chasing = true
+#		pos_valid = true
+#		pos = global_position
 		
 	if not ray_cast_left.is_colliding() and left_collided:
 #		move_toward(speed, 0, 20)
-		velocity.x = 0
+#		velocity.x = move_toward(velocity.x, 0, speed * delta)
 		left_collided = false
+		chasing = false
 		
 	if ray_cast_right.is_colliding():
-		velocity.x += speed * delta
+#		velocity.x += speed * delta
+#		position.x += 1
 		animated_sprite_2d.flip_h = true
 		right_collided = true
+		chasing = true
+#		pos_valid = true
+#		pos = global_position
+		
 	if not ray_cast_right.is_colliding() and right_collided:
-		velocity.x = 0
+#		velocity.x = 0
 #		print(move_toward(velocity.x, 0, 20))
 		right_collided = false
-		
-		
-	move_and_slide()
+		chasing = false
+				
+#	move_and_slide()
 
 func _on_stats_no_health():
 	if death : return
