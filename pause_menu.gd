@@ -7,6 +7,6 @@ var pause = false:
 		get_tree().paused = pause
 		visible = pause
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause_button") and not dialogue.playing :
 		pause = !pause

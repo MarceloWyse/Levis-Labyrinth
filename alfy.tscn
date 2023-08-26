@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://w5oimrwf26ou"]
 
-[ext_resource type="Texture2D" uid="uid://cg5tbu62w1lk8" path="res://Alfy sprite idle.png" id="1_rcp01"]
+[ext_resource type="Texture2D" uid="uid://bocijsm065eeq" path="res://Alfy_idle_outline.png" id="1_u5h0s"]
 [ext_resource type="Script" path="res://alfy.gd" id="2_m5c88"]
 
 [sub_resource type="Animation" id="Animation_27485"]
@@ -42,7 +42,7 @@ _data = {
 }
 
 [node name="Alfy" type="Sprite2D"]
-texture = ExtResource("1_rcp01")
+texture = ExtResource("1_u5h0s")
 hframes = 5
 script = ExtResource("2_m5c88")
 

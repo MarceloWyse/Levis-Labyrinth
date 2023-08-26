@@ -13,7 +13,7 @@ func _ready():
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	animated_sprite_2d.play("default")
 	if Input.is_action_just_pressed("dialogue") and dialogue1:
 		if cont == 0:

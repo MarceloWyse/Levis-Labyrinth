@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6j016gflf0kf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gbny"]
+font_size = 10
+font_color = Color(1, 1, 0.615686, 1)
+
+[node name="DamageTaken" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -15.0
+offset_right = -314.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 14.0
+offset_bottom = 17.0
+text = "0"
+label_settings = SubResource("LabelSettings_8gbny")
+horizontal_alignment = 1

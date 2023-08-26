@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://byqkwcs1rkfor"]
+
+[ext_resource type="Texture2D" uid="uid://75jkpqqvwabw" path="res://vfz_teste.png" id="1_npu5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_871d0"]
+atlas = ExtResource("1_npu5c")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq848"]
+atlas = ExtResource("1_npu5c")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy2io"]
+atlas = ExtResource("1_npu5c")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mnxu"]
+atlas = ExtResource("1_npu5c")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dnhu"]
+atlas = ExtResource("1_npu5c")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edvd4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_871d0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq848")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy2io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mnxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dnhu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="DeathEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_edvd4")
+frame = 4
+frame_progress = 1.0

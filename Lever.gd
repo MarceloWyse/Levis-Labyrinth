@@ -10,8 +10,8 @@ extends Area2D
 func _ready():
 	pass # Replace with function body.
 
-
-func _physics_process(delta):
+func _physics_process(_delta):
+	if not levi : return
 	if overlaps_body(levi):
 		if Input.is_action_just_pressed("dialogue"):
 			lever.play("lever")
