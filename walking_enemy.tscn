@@ -37,6 +37,11 @@ region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pg8rb"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"blob_2",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dr5wn")
@@ -96,7 +101,7 @@ _data = {
 
 [node name="WalkingEnemy" type="CharacterBody2D"]
 z_index = 5
-position = Vector2(18, 0)
+position = Vector2(-30, 0)
 collision_layer = 4
 script = ExtResource("1_ugjxi")
 
@@ -104,7 +109,7 @@ script = ExtResource("1_ugjxi")
 sprite_frames = SubResource("SpriteFrames_pg8rb")
 animation = &"blob_walk"
 autoplay = "blob_walk"
-frame_progress = 0.738628
+frame_progress = 0.810968
 offset = Vector2(3, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -157,6 +162,12 @@ autoplay = "move"
 libraries = {
 "": SubResource("AnimationLibrary_5cp73")
 }
+
+[node name="Fire" type="Marker2D" parent="."]
+position = Vector2(0.999996, -17)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]

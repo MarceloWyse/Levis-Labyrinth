@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dw0veek4u0c0f"]
+[gd_scene load_steps=62 format=3 uid="uid://dw0veek4u0c0f"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
@@ -31,6 +31,8 @@
 [ext_resource type="Script" path="res://Stairs.gd" id="25_fivxl"]
 [ext_resource type="Texture2D" uid="uid://c2qaixfpurjnp" path="res://painting.png" id="28_kwkm3"]
 [ext_resource type="PackedScene" uid="uid://cv2f0jq1yumkb" path="res://moving_platform.tscn" id="29_5fu4w"]
+[ext_resource type="PackedScene" uid="uid://b5imxbng84xwc" path="res://blob_2.tscn" id="32_afvkg"]
+[ext_resource type="PackedScene" uid="uid://d0kuhrlrlq665" path="res://sadness.tscn" id="33_045rd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
 font_size = 8
@@ -402,10 +404,6 @@ scale = Vector2(1.11719, 1.11719)
 sprite_frames = SubResource("SpriteFrames_vrcin")
 animation = &"move_door"
 
-[node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(-249.33, 144.111)
-collision_mask = 161
-
 [node name="GroundButton" type="StaticBody2D" parent="."]
 position = Vector2(506.356, -89.5246)
 collision_layer = 129
@@ -509,6 +507,16 @@ speed_scale = 1.2
 position = Vector2(-93.9165, 143.23)
 
 [node name="WalkingEnemy" parent="Walker" instance=ExtResource("10_xfj1e")]
+position = Vector2(15.5824, 0)
+
+[node name="Blob2" parent="Walker" instance=ExtResource("32_afvkg")]
+
+[node name="Sadness" parent="." instance=ExtResource("33_045rd")]
+position = Vector2(249.464, -96.069)
+
+[node name="Levi" parent="." instance=ExtResource("1_w5emb")]
+position = Vector2(180.997, -82.501)
+collision_mask = 161
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
@@ -523,8 +531,7 @@ position = Vector2(-93.9165, 143.23)
 [connection signal="body_exited" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_exited"]
 
 [editable path="UI/Dialogue"]
-[editable path="Levi"]
-[editable path="Levi/Sword"]
+[editable path="UI/EnemyName"]
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
 [editable path="MovingPlatform3"]

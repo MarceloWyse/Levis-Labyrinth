@@ -26,7 +26,6 @@ func _on_body_entered(body):
 			ball.set_deferred("freeze", true)
 #			set_deferred("monitorable", false)
 			
-
 func _on_body_exited(body):
 	if body is Ball or body is Player:
 		if not pressed:

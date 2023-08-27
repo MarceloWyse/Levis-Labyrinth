@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://d0kuhrlrlq665"]
+
+[ext_resource type="Script" path="res://sadness.gd" id="1_ds43c"]
+[ext_resource type="Texture2D" uid="uid://cdclpcf1cgtr8" path="res://Sprite Sheet Tristeza.png" id="1_sh3ij"]
+[ext_resource type="PackedScene" uid="uid://dk1djiye3iyvm" path="res://stats.tscn" id="3_ers66"]
+[ext_resource type="PackedScene" uid="uid://pjgm2mcjmuj2" path="res://hitbox.tscn" id="4_5xjmi"]
+[ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="5_c1fs4"]
+[ext_resource type="PackedScene" uid="uid://b6j016gflf0kf" path="res://damage_taken.tscn" id="7_ralsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkamj"]
+atlas = ExtResource("1_sh3ij")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnd8a"]
+atlas = ExtResource("1_sh3ij")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlbfn"]
+atlas = ExtResource("1_sh3ij")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gbxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkamj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnd8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlbfn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ixtl"]
+size = Vector2(28, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hkc4"]
+size = Vector2(26, 25)
+
+[node name="Sadness" type="Node2D"]
+script = ExtResource("1_ds43c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2gbxg")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.193629
+
+[node name="Stats" parent="." instance=ExtResource("3_ers66")]
+max_health = 5
+
+[node name="Hitbox" parent="." instance=ExtResource("4_5xjmi")]
+collision_layer = 0
+collision_mask = 8
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3, 2.5)
+shape = SubResource("RectangleShape2D_1ixtl")
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_c1fs4")]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3, 2.5)
+shape = SubResource("RectangleShape2D_8hkc4")
+
+[node name="DamageTaken" parent="." instance=ExtResource("7_ralsr")]
+visible = false
+offset_left = -3.0
+offset_top = -24.0
+offset_right = -3.0
+offset_bottom = -24.0
+
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

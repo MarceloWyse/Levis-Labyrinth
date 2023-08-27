@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpuowerilwty5"]
+
+[ext_resource type="PackedScene" uid="uid://b2i8b5stiwy1n" path="res://projectile.tscn" id="1_sowb2"]
+[ext_resource type="Texture2D" uid="uid://ckdtelqjlhq28" path="res://blob-eye-Sheet.png" id="2_h004y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6bd"]
+size = Vector2(9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6uq3"]
+atlas = ExtResource("2_h004y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ualda"]
+atlas = ExtResource("2_h004y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sc06"]
+atlas = ExtResource("2_h004y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fux7"]
+atlas = ExtResource("2_h004y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kud5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6uq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ualda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sc06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fux7")
+}],
+"loop": true,
+"name": &"eye",
+"speed": 5.0
+}]
+
+[node name="EnemyBullet" instance=ExtResource("1_sowb2")]
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
+position = Vector2(0.5, 0.5)
+scale = Vector2(0.45, 0.45)
+
+[node name="Hitbox" parent="." index="1"]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_4e6bd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_kud5p")
+animation = &"eye"
+autoplay = "eye"
+frame = 3
+frame_progress = 0.783013

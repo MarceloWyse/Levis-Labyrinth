@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
+@onready var levi = $"../../Levi"
+@onready var enemy_name = $"../../UI/EnemyName"
 @onready var damage_taken = $DamageTaken
 @onready var stats = $Stats
 @onready var hitbox = $Hitbox
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var hurtbox = $Hurtbox
-@onready var levi = $"../../Levi"
-@onready var enemy_name = $"../../UI/EnemyName"
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -44,7 +44,7 @@ func fire_bullet():
 func _process(delta):
 
 	if not chasing:
-		$AnimationPlayer.play("move")
+		$AnimationPlayer.play("blob2_move")
 #		if pos_valid:
 #			walker.global_position = pos
 #			velocity.x = move_toward(global_position.x, walker.global_position.x, speed * delta)
