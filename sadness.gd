@@ -21,6 +21,7 @@ func _on_stats_no_health():
 
 func _on_hurtbox_hurt(hitbox, damage):
 	stats.health -= damage
+	Sound.play(Sound.hit)
 	enemy_name.get_node("TextureRect/Label").text = "Sadness"
 	enemy_name.visible = true
 	stats.health -= damage

@@ -107,6 +107,7 @@ func _on_stats_no_health():
 
 func _on_hurtbox_hurt(_hitbox, damage):
 	Sound.play(Sound.hit)
+	enemy_name.get_node("TextureRect/Label").text = "Agorafobus"
 	enemy_name.visible = true
 	stats.health -= damage
 	damage_taken.visible = true

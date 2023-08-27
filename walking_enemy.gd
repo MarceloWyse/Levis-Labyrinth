@@ -109,6 +109,7 @@ func _on_hurtbox_hurt(_hitbox, damage):
 	Sound.play(Sound.hit)
 	enemy_name.visible = true
 	stats.health -= damage
+	enemy_name.get_node("TextureRect/Label").text = "Agorafobia"
 	damage_taken.visible = true
 	damage_taken.get_node("Label").text = str(damage)
 	await get_tree().create_timer(1).timeout
