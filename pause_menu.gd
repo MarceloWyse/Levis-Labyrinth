@@ -1,5 +1,6 @@
 extends ColorRect
 
+@onready var hp_up = $"../../HP_UP"
 @onready var dialogue = $"../Dialogue"
 var pause = false: 
 	set(value):
@@ -8,5 +9,5 @@ var pause = false:
 		visible = pause
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause_button") and not dialogue.playing :
+	if Input.is_action_just_pressed("pause_button") and not dialogue.playing:
 		pause = !pause

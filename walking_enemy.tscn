@@ -99,7 +99,7 @@ _data = {
 "move": SubResource("Animation_jmm24")
 }
 
-[node name="WalkingEnemy" type="CharacterBody2D"]
+[node name="Agorafobia" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(-30, 0)
 collision_layer = 4

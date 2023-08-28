@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://btl8yebiv8yxn"]
+
+[ext_resource type="Texture2D" uid="uid://sjn16ab2hxog" path="res://hp_up-Sheet.png" id="1_n2r4e"]
+[ext_resource type="Script" path="res://hp_up.gd" id="1_t413m"]
+[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="3_m8h6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4net"]
+atlas = ExtResource("1_n2r4e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb6e3"]
+atlas = ExtResource("1_n2r4e")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgeu2"]
+atlas = ExtResource("1_n2r4e")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhqr5"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_g4net")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb6e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgeu2")
+}],
+"loop": true,
+"name": &"hp",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43kvj"]
+size = Vector2(11.8118, 10.3943)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5qld"]
+font = ExtResource("3_m8h6o")
+
+[node name="HP_UP" type="Node2D"]
+script = ExtResource("1_t413m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xhqr5")
+animation = &"hp"
+autoplay = "hp"
+frame_progress = 0.664766
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.159881, 1.66095)
+shape = SubResource("RectangleShape2D_43kvj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -42.4777
+offset_top = 9.0
+offset_right = 42.5223
+offset_bottom = 25.0
+text = "Life max up"
+label_settings = SubResource("LabelSettings_j5qld")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

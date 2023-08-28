@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dw0veek4u0c0f"]
+[gd_scene load_steps=63 format=3 uid="uid://dw0veek4u0c0f"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cv2f0jq1yumkb" path="res://moving_platform.tscn" id="29_5fu4w"]
 [ext_resource type="PackedScene" uid="uid://b5imxbng84xwc" path="res://blob_2.tscn" id="32_afvkg"]
 [ext_resource type="PackedScene" uid="uid://d0kuhrlrlq665" path="res://sadness.tscn" id="33_045rd"]
+[ext_resource type="PackedScene" uid="uid://btl8yebiv8yxn" path="res://hp_up.tscn" id="34_ubdrp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
 font_size = 8
@@ -519,6 +520,10 @@ collision_mask = 161
 [node name="Walker2" type="Node2D" parent="."]
 
 [node name="Blob2" parent="Walker2" instance=ExtResource("32_afvkg")]
+
+[node name="HP_UP" parent="." instance=ExtResource("34_ubdrp")]
+process_mode = 3
+position = Vector2(-215.218, 137.118)
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
