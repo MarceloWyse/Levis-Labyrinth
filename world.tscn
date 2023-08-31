@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dw0veek4u0c0f"]
+[gd_scene load_steps=71 format=3 uid="uid://dw0veek4u0c0f"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cbeyo5fgbwg8l" path="res://door-Sheet.png" id="10_bsgxo"]
 [ext_resource type="PackedScene" uid="uid://yvvidq8dwd07" path="res://walking_enemy.tscn" id="10_xfj1e"]
 [ext_resource type="PackedScene" uid="uid://c85ne3234n830" path="res://tile_map.tscn" id="11_6idk1"]
+[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="11_c63c8"]
+[ext_resource type="Texture2D" uid="uid://drhqk3afughf7" path="res://Assets/coin_turning_animation.png" id="12_vpn3f"]
 [ext_resource type="Script" path="res://Lever.gd" id="14_ex33n"]
 [ext_resource type="Texture2D" uid="uid://bmxp2le8ry21e" path="res://lever-Sheet.png" id="14_f7k5k"]
 [ext_resource type="Texture2D" uid="uid://4plvvmik3f1h" path="res://inc-door-Sheet.png" id="15_jfv74"]
@@ -34,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://b5imxbng84xwc" path="res://blob_2.tscn" id="32_afvkg"]
 [ext_resource type="PackedScene" uid="uid://d0kuhrlrlq665" path="res://sadness.tscn" id="33_045rd"]
 [ext_resource type="PackedScene" uid="uid://btl8yebiv8yxn" path="res://hp_up.tscn" id="34_ubdrp"]
+[ext_resource type="PackedScene" uid="uid://vnuqtlx5qrgi" path="res://money_bag.tscn" id="37_doxqt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
 font_size = 8
@@ -42,6 +45,39 @@ font_color = Color(0.913725, 0.709804, 0.776471, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qkjy5"]
 font_size = 10
 font_color = Color(0.85098, 0.756863, 0.92549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dyjjf"]
+font = ExtResource("11_c63c8")
+font_size = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyswd"]
+atlas = ExtResource("12_vpn3f")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0xy6"]
+atlas = ExtResource("12_vpn3f")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqvea"]
+atlas = ExtResource("12_vpn3f")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvccl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyswd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0xy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqvea")
+}],
+"loop": true,
+"name": &"turning",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elsyx"]
 size = Vector2(11, 9)
@@ -283,6 +319,38 @@ offset_top = 158.596
 offset_right = -10.3482
 offset_bottom = -5.40433
 
+[node name="Label" type="Label" parent="UI"]
+offset_left = 1.36932
+offset_top = 168.295
+offset_right = 49.3693
+offset_bottom = 179.295
+text = "Alfy's Cooldown: "
+label_settings = SubResource("LabelSettings_dyjjf")
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Label"]
+layout_mode = 0
+offset_left = 61.5638
+offset_top = -3.39685
+offset_right = 76.5638
+offset_bottom = 11.6031
+theme_override_font_sizes/font_size = 6
+max_value = 10.0
+step = 0.1
+
+[node name="Coin" type="AnimatedSprite2D" parent="UI"]
+position = Vector2(240.786, 11.828)
+sprite_frames = SubResource("SpriteFrames_kvccl")
+animation = &"turning"
+autoplay = "turning"
+
+[node name="MoneyLabel" type="Label" parent="UI/Coin"]
+offset_left = 8.1011
+offset_top = -3.57772
+offset_right = 21.1011
+offset_bottom = 7.42228
+text = "100"
+label_settings = SubResource("LabelSettings_dyjjf")
+
 [node name="Key" type="Area2D" parent="."]
 position = Vector2(-17, 138)
 collision_mask = 3
@@ -514,7 +582,7 @@ position = Vector2(15.5824, 0)
 position = Vector2(249.464, -96.069)
 
 [node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(-254.28, 143.065)
+position = Vector2(-171.107, 142.097)
 collision_mask = 161
 
 [node name="Walker2" type="Node2D" parent="."]
@@ -524,6 +592,9 @@ collision_mask = 161
 [node name="HP_UP" parent="." instance=ExtResource("34_ubdrp")]
 process_mode = 3
 position = Vector2(-215.218, 137.118)
+
+[node name="MoneyBag" parent="." instance=ExtResource("37_doxqt")]
+position = Vector2(-23.1016, -78.9417)
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

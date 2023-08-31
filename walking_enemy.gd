@@ -13,6 +13,8 @@ extends CharacterBody2D
 @onready var fire = $Fire
 @onready var timer = $Timer
 
+
+const MONEY_SCENE = preload("res://money_bag.tscn")
 const ENEMY_BULLET_SCENE = preload("res://enemy_bullet.tscn")
 var death = false
 var death_vfx = preload("res://death_effect.tscn")
@@ -93,7 +95,13 @@ func _process(delta):
 
 func _on_stats_no_health():
 	if death : return
-#	hitbox.queue_free()
+#	
+	var money_bag = MONEY_SCENE.instantiate()
+	money_bag.global_position = global_position + Vector2(0, -15)
+#	money_bag.global_position = global_position
+	var world = get_tree().current_scene
+	
+	world.add_child.call_deferred(money_bag)
 	hitbox.queue_free()	
 	hurtbox.queue_free()
 	var my_tween = create_tween()

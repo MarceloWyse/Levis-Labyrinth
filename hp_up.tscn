@@ -46,7 +46,7 @@ script = ExtResource("1_t413m")
 sprite_frames = SubResource("SpriteFrames_xhqr5")
 animation = &"hp"
 autoplay = "hp"
-frame_progress = 0.664766
+frame_progress = 0.680623
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2

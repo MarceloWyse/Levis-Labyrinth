@@ -12,58 +12,63 @@ extends CharacterBody2D
 @onready var label = $DamageCounter/Label
 @onready var damage_counter = $DamageCounter
 @onready var camera_2d = $Camera2D
+@onready var progress_bar = $"../UI/Label/ProgressBar"
+@onready var money_label = $"../UI/Coin/MoneyLabel"
 
+var money : int = 0
 var gravity = 900
 var blue_key = false
 var medal = false
 var trophy = false
 var initial_position
+var punching = false
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -340.0
 
 func _ready():
+	MainInstances.player = self
 	initial_position = global_position
 	damage_counter.visible = false
 	PlayerStats.connect("no_health", reparent_camera)
 	PlayerStats.connect("no_health", queue_free)
 
 func _physics_process(delta):
+	
+	money_label.text = str(money)
+
+	progress_bar.value = $AlfyTimer.time_left
 
 	if global_position.y > 500:
 #		global_position = initial_position
 		global_position = Vector2(-245,100)
 		
 	apply_gravity(delta)
-
-	if Input.is_action_just_pressed("sword"):
-		sword.get_node("AnimationPlayer").play("attack")
+	
+#	if Input.is_action_just_pressed("sword"):
+#		sword.get_node("AnimationPlayer").play("attack")
 
 	if animated_sprite_2d.flip_h == false:
 ###		alfy_test.global_position = global_position + Vector2(-14,-28)
 ###		messing with the global_positon here breaks the collision of the hitbox
 		alfy_test.flip_h = false
 ##
-		if Input.is_action_just_pressed("alfy"):
+		if Input.is_action_just_pressed("alfy") and $AlfyTimer.time_left == 0:
 ##			alfy_test.global_position = global_position + Vector2(-14,-28)
 			animation_player.play("alfy_test_right")
+			$AlfyTimer.start()
 #
 	if animated_sprite_2d.flip_h == true:
 		alfy_test.flip_h = true
-		if Input.is_action_just_pressed("alfy"):
+		if Input.is_action_just_pressed("alfy") and $AlfyTimer.time_left == 0:
 			animation_player.play("alfy_test_left")
+			$AlfyTimer.start()
 #
-	if Input.is_action_just_pressed("attack"):
-		if animated_sprite_2d.flip_h == false:
-			animation_player.play("attack_right")
-		else:
-			animation_player.play("attack_left")	
-
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction and not punching:
 		velocity.x = direction * SPEED
 		if velocity.x > 0:
-			punch.global_position = global_position + Vector2(+7, -20)
+#			punch.global_position = global_position + Vector2(+7, -20)
 			alfy_test.global_position = global_position + Vector2(-14,-28)
 			animated_sprite_2d.flip_h = false
 
@@ -73,7 +78,7 @@ func _physics_process(delta):
 		elif velocity.x < 0 and velocity.y == 0:
 			animated_sprite_2d.play("walk")
 			animated_sprite_2d.flip_h = true
-			punch.global_position = global_position + Vector2(-7,-20)
+#			punch.global_position = global_position + Vector2(-7,-20)
 			alfy_test.global_position = global_position + Vector2(14,-28)
 #
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -91,10 +96,25 @@ func _physics_process(delta):
 #			print("oie")
 #			global_position += Vector2(20,0)
 
-	elif not direction and velocity.y == 0:
+	if not direction and velocity.y == 0 and not punching:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
 	
+	if Input.is_action_just_pressed("attack"):
+		punching = true
+		if animated_sprite_2d.flip_h == false:
+			velocity.x = 0
+			animated_sprite_2d.play("punch")
+			animation_player.play("attack_right")
+			await animated_sprite_2d.animation_finished
+			punching = false
+		else:
+			velocity.x = 0
+			animated_sprite_2d.play("punch")
+			animation_player.play("attack_left")
+			await animation_player.animation_finished
+			punching = false
+			
 	var was_on_floor = is_on_floor()
 	
 	move_and_slide()

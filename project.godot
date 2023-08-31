@@ -21,6 +21,7 @@ PlayerStats="*res://player_stats.tscn"
 Events="*res://Events.gd"
 Sound="*res://sound.tscn"
 Music="*res://music.tscn"
+MainInstances="*res://MainInstances.gd"
 
 [display]
 

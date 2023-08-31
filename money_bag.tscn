@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://vnuqtlx5qrgi"]
+
+[ext_resource type="Script" path="res://money_bag.gd" id="1_8x5jc"]
+[ext_resource type="Texture2D" uid="uid://da2yps3weoa2o" path="res://money_bag_blue_100.png" id="1_eki2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyx57"]
+size = Vector2(21.5761, 15.749)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdbf8"]
+size = Vector2(20, 15.8945)
+
+[node name="MoneyBag" type="RigidBody2D"]
+collision_layer = 0
+mass = 0.1
+script = ExtResource("1_8x5jc")
+
+[node name="BlueMoney100" type="Sprite2D" parent="."]
+position = Vector2(-0.278458, 10.5272)
+texture = ExtResource("1_eki2e")
+offset = Vector2(1.39448, -25.5036)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.378092, -8.39212)
+shape = SubResource("RectangleShape2D_wyx57")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.529732, -8.93918)
+shape = SubResource("RectangleShape2D_vdbf8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

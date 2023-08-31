@@ -1,19 +1,12 @@
-[gd_scene load_steps=59 format=3 uid="uid://jcsijd2gratx"]
+[gd_scene load_steps=66 format=3 uid="uid://jcsijd2gratx"]
 
 [ext_resource type="Script" path="res://levi.gd" id="1_7fpum"]
-[ext_resource type="Texture2D" uid="uid://ds7acqlxkbqm1" path="res://Ladder-Grab/Warrior-Ladder-Grab_1.png" id="2_nva6t"]
-[ext_resource type="Texture2D" uid="uid://c5je56noeskro" path="res://Ladder-Grab/Warrior-Ladder-Grab_2.png" id="3_0f1xf"]
+[ext_resource type="Texture2D" uid="uid://cx33gs2n7seop" path="res://Sprite-Ladder-Sheet.png" id="2_d3sa4"]
 [ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="4_3lsar"]
-[ext_resource type="Texture2D" uid="uid://bkyjvegn1ddg6" path="res://Ladder-Grab/Warrior-Ladder-Grab_3.png" id="4_xgwcv"]
+[ext_resource type="Texture2D" uid="uid://crtp5t1buegcg" path="res://Sprite punch-Sheet-test.png" id="5_km8kg"]
 [ext_resource type="PackedScene" uid="uid://pjgm2mcjmuj2" path="res://hitbox.tscn" id="5_r50r7"]
-[ext_resource type="Texture2D" uid="uid://cc438p3cxypc3" path="res://Ladder-Grab/Warrior-Ladder-Grab_4.png" id="5_s4jyh"]
 [ext_resource type="PackedScene" uid="uid://w5oimrwf26ou" path="res://alfy.tscn" id="6_hbwph"]
-[ext_resource type="Texture2D" uid="uid://gtwqlf0cp3qb" path="res://Ladder-Grab/Warrior-Ladder-Grab_5.png" id="6_lpuul"]
-[ext_resource type="Texture2D" uid="uid://w7i2b4en17mt" path="res://chave .png" id="6_pc6ue"]
 [ext_resource type="Script" path="res://hitbox.gd" id="6_tq2eq"]
-[ext_resource type="Texture2D" uid="uid://cwdrws0nekeh4" path="res://Ladder-Grab/Warrior-Ladder-Grab_6.png" id="7_s84p7"]
-[ext_resource type="Texture2D" uid="uid://c2e4xgb8f8c5o" path="res://Ladder-Grab/Warrior-Ladder-Grab_7.png" id="8_8cmg6"]
-[ext_resource type="Texture2D" uid="uid://s68obn5amvq1" path="res://Ladder-Grab/Warrior-Ladder-Grab_8.png" id="9_wekg5"]
 [ext_resource type="PackedScene" uid="uid://b3hkh0r5bd2t8" path="res://sword.tscn" id="10_7e36c"]
 [ext_resource type="Texture2D" uid="uid://cpmflkfm3lf4n" path="res://levi_idle.png" id="11_3ldhw"]
 [ext_resource type="Texture2D" uid="uid://b7hcyo20ow15n" path="res://Levi-walk-cycle-outline.png" id="12_8x754"]
@@ -21,6 +14,38 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qothd"]
 radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2k1m"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qes1x"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmi1d"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gxh6"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daaao"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgmnj"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byeae"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3eyh"]
+atlas = ExtResource("2_d3sa4")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0oco"]
 atlas = ExtResource("12_mrn1v")
@@ -98,6 +123,30 @@ region = Rect2(48, 0, 48, 64)
 atlas = ExtResource("12_mrn1v")
 region = Rect2(96, 0, 48, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi6b6"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2qyx"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep0j5"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1axtd"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a7gd"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r85ws"]
+atlas = ExtResource("5_km8kg")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxcvd"]
 atlas = ExtResource("12_8x754")
 region = Rect2(0, 0, 64, 64)
@@ -134,28 +183,28 @@ region = Rect2(448, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_nva6t")
+"texture": SubResource("AtlasTexture_q2k1m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_0f1xf")
+"texture": SubResource("AtlasTexture_qes1x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_xgwcv")
+"texture": SubResource("AtlasTexture_pmi1d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_s4jyh")
+"texture": SubResource("AtlasTexture_2gxh6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_lpuul")
+"texture": SubResource("AtlasTexture_daaao")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_s84p7")
+"texture": SubResource("AtlasTexture_dgmnj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_8cmg6")
+"texture": SubResource("AtlasTexture_byeae")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_wekg5")
+"texture": SubResource("AtlasTexture_u3eyh")
 }],
 "loop": true,
 "name": &"climb",
@@ -235,6 +284,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vi6b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2qyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep0j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a7gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r85ws")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hxcvd")
 }, {
 "duration": 1.0,
@@ -271,38 +343,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox/punch:position")
+tracks/0/path = NodePath("AlfyTest:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(14, -13)]
+"values": [Vector2(-15, -27)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AlfyTest:position")
+tracks/1/path = NodePath("Hitbox/punch:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-15, -27)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox/punch:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Vector2(-34, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_0svej"]
@@ -361,7 +421,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lqxjg"]
 resource_name = "attack_left"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -369,10 +429,10 @@ tracks/0/path = NodePath("Hitbox/punch:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-9, -19), Vector2(-13, -17), Vector2(-20, -11), Vector2(-6, -18)]
+"values": [Vector2(-32, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -381,7 +441,7 @@ tracks/1/path = NodePath("Hitbox/punch:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -389,7 +449,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_6353w"]
 resource_name = "attack_right"
-length = 0.8
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -397,10 +457,10 @@ tracks/0/path = NodePath("Hitbox/punch:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(7, -14), Vector2(17, -12), Vector2(21, -12), Vector2(12, -14), Vector2(7, -15)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -409,7 +469,7 @@ tracks/1/path = NodePath("Hitbox/punch:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -441,8 +501,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6d7jm"]
-radius = 5.0
-height = 10.0
+radius = 9.0
+height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk6ro"]
 
@@ -467,7 +527,8 @@ shape = SubResource("CapsuleShape2D_qothd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pkqc7")
-animation = &"idle"
+animation = &"punch"
+frame = 2
 offset = Vector2(0, -15)
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_3lsar")]
@@ -485,19 +546,15 @@ libraries = {
 }
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(16, -13)
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("6_tq2eq")
 
 [node name="punch" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(14, -13)
+position = Vector2(-34, -3)
 shape = SubResource("CapsuleShape2D_6d7jm")
 disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Hitbox/punch"]
-position = Vector2(1, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_pc6ue")
 
 [node name="AlfyTest" parent="." instance=ExtResource("6_hbwph")]
 position = Vector2(-15, -27)
@@ -531,6 +588,10 @@ offset_bottom = 12.0
 text = "0"
 label_settings = SubResource("LabelSettings_xyrrt")
 horizontal_alignment = 1
+
+[node name="AlfyTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered" flags=18]
