@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dw0veek4u0c0f"]
+[gd_scene load_steps=72 format=3 uid="uid://dw0veek4u0c0f"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://d0kuhrlrlq665" path="res://sadness.tscn" id="33_045rd"]
 [ext_resource type="PackedScene" uid="uid://btl8yebiv8yxn" path="res://hp_up.tscn" id="34_ubdrp"]
 [ext_resource type="PackedScene" uid="uid://vnuqtlx5qrgi" path="res://money_bag.tscn" id="37_doxqt"]
+[ext_resource type="PackedScene" uid="uid://c4hsj5avjv3ad" path="res://pigbank.tscn" id="38_npnn8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
 font_size = 8
@@ -582,7 +583,7 @@ position = Vector2(15.5824, 0)
 position = Vector2(249.464, -96.069)
 
 [node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(-171.107, 142.097)
+position = Vector2(383.175, -82.2902)
 collision_mask = 161
 
 [node name="Walker2" type="Node2D" parent="."]
@@ -595,6 +596,9 @@ position = Vector2(-215.218, 137.118)
 
 [node name="MoneyBag" parent="." instance=ExtResource("37_doxqt")]
 position = Vector2(-23.1016, -78.9417)
+
+[node name="Pigbank" parent="." instance=ExtResource("38_npnn8")]
+position = Vector2(428.416, -86.7398)
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

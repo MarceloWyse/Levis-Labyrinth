@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4hsj5avjv3ad"]
+
+[ext_resource type="Texture2D" uid="uid://ync0j3k1n3mo" path="res://pigbank-break.png" id="1_gtcri"]
+[ext_resource type="Script" path="res://pigbank.gd" id="2_ok50e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2q6q"]
+atlas = ExtResource("1_gtcri")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myvxb"]
+atlas = ExtResource("1_gtcri")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndf81"]
+atlas = ExtResource("1_gtcri")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7iwa"]
+atlas = ExtResource("1_gtcri")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvdml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2q6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myvxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndf81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7iwa")
+}],
+"loop": false,
+"name": &"pig_break",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muole"]
+size = Vector2(16, 15)
+
+[node name="Pigbank" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fvdml")
+animation = &"pig_break"
+script = ExtResource("2_ok50e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -1.5)
+shape = SubResource("RectangleShape2D_muole")

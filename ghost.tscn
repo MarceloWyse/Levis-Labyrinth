@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://3pq3osh74kpo"]
+
+[ext_resource type="Texture2D" uid="uid://bnnno7aeys0ar" path="res://Dash_NoDust/Warrior_Dash_1.png" id="1_k6bpm"]
+[ext_resource type="Script" path="res://ghost.gd" id="1_uvwn3"]
+[ext_resource type="Texture2D" uid="uid://cougoyn36rx6i" path="res://Dash_NoDust/Warrior_Dash_2.png" id="2_1lvcv"]
+[ext_resource type="Texture2D" uid="uid://csexovrejwupt" path="res://Dash_NoDust/Warrior_Dash_3.png" id="3_ovi0o"]
+[ext_resource type="Texture2D" uid="uid://bvaum855nmltt" path="res://Dash_NoDust/Warrior_Dash_4.png" id="4_1y8i1"]
+[ext_resource type="Texture2D" uid="uid://bm17cf2w14bsn" path="res://Dash_NoDust/Warrior_Dash_5.png" id="5_3hueo"]
+[ext_resource type="Texture2D" uid="uid://cvu6qog6hmoww" path="res://Dash_NoDust/Warrior_Dash_6.png" id="6_6n5pp"]
+[ext_resource type="Texture2D" uid="uid://dlnixdvjjyqgg" path="res://Dash_NoDust/Warrior_Dash_7.png" id="7_k0lie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ji0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k6bpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1lvcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ovi0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1y8i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3hueo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6n5pp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k0lie")
+}],
+"loop": false,
+"name": &"ghost_dash",
+"speed": 10.0
+}]
+
+[node name="Ghost" type="AnimatedSprite2D"]
+modulate = Color(0.301961, 0.301961, 0.301961, 1)
+position = Vector2(6, -12)
+sprite_frames = SubResource("SpriteFrames_6ji0g")
+animation = &"ghost_dash"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(0, -10)
+script = ExtResource("1_uvwn3")

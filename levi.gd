@@ -6,15 +6,16 @@ extends CharacterBody2D
 @onready var hitbox = $AlfyTest/Hitbox
 @onready var ui = $"../UI"
 @onready var animation_player = $AnimationPlayer
-@onready var punch = $Hitbox/punch
+@onready var punch = $PunchHitbox/punch
 @onready var hurtbox = $Hurtbox
-@onready var sword = $Sword
 @onready var label = $DamageCounter/Label
 @onready var damage_counter = $DamageCounter
 @onready var camera_2d = $Camera2D
 @onready var progress_bar = $"../UI/Label/ProgressBar"
 @onready var money_label = $"../UI/Coin/MoneyLabel"
+@onready var dash_timer = $DashTimer
 
+@export var GHOST_SCENE : PackedScene
 var money : int = 0
 var gravity = 900
 var blue_key = false
@@ -22,7 +23,7 @@ var medal = false
 var trophy = false
 var initial_position
 var punching = false
-
+var knockback = false
 const SPEED = 100.0
 const JUMP_VELOCITY = -340.0
 
@@ -65,7 +66,7 @@ func _physics_process(delta):
 			$AlfyTimer.start()
 #
 	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction and not punching:
+	if direction and not punching and not knockback:
 		velocity.x = direction * SPEED
 		if velocity.x > 0:
 #			punch.global_position = global_position + Vector2(+7, -20)
@@ -81,7 +82,7 @@ func _physics_process(delta):
 #			punch.global_position = global_position + Vector2(-7,-20)
 			alfy_test.global_position = global_position + Vector2(14,-28)
 #
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not knockback:
 		velocity.y = JUMP_VELOCITY
 		Sound.play(Sound.jump)
 #		animated_sprite_2d.play("jump_full")
@@ -96,7 +97,23 @@ func _physics_process(delta):
 #			print("oie")
 #			global_position += Vector2(20,0)
 
-	if not direction and velocity.y == 0 and not punching:
+	if not is_on_floor():
+		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0:
+			$GhostTimer.start()
+			if animated_sprite_2d.flip_h == false:
+				var my_tween = get_tree().create_tween()
+#				my_tween.tween_property(self, "position:x", position.x + 80, 0.4)
+				my_tween.tween_property(self, "velocity:x", velocity.x + 350, 0.4)
+#				position.x += 50
+			else:
+				var my_tween = get_tree().create_tween()
+				my_tween.tween_property(self, "velocity:x", velocity.x - 350, 0.4)
+#				position.x -= 50
+			dash_timer.start()
+			await get_tree().create_timer(0.7).timeout
+			$GhostTimer.stop()
+			
+	if not direction and velocity.y == 0 and not punching and not knockback:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
 	
@@ -119,7 +136,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	if was_on_floor and not is_on_floor():
+	if was_on_floor and not is_on_floor() and not knockback:
 		animated_sprite_2d.play("fall")
 
 	for i in get_slide_collision_count():
@@ -133,20 +150,49 @@ func apply_gravity(delta):
 	
 func _on_hurtbox_hurt(_hitbox, damage):
 	damage_counter.visible = true
+	knockback = true
+	velocity = Vector2.ZERO
 	PlayerStats.health -= damage
+	hurtbox.is_invincible = true
+	$InvincibilityTimer.start()
 	Sound.play(Sound.hit)
-	var my_tween = get_tree().create_tween()
+#	var my_tween = get_tree().create_tween()
 	label.text = str(damage)
 	label.position = Vector2(0,0)
-	hurtbox.is_invincible = true
+
 #	await my_tween.finished
-	animation_player.play("blink")
-	my_tween.tween_property(label, "position", Vector2(-3, -1), 0.5)
-	await animation_player.animation_finished
+	animated_sprite_2d.play("knockback")
+	if $AnimatedSprite2D.flip_h == false:
+		velocity.x = velocity.x - 30
+		velocity.y = velocity.y - 100
+	if $AnimatedSprite2D.flip_h == true:
+		velocity.x = velocity.x + 30
+		velocity.y = velocity.y - 100
+#	my_tween.tween_property(label, "position", Vector2(-3, -1), 0.5)
+#	await animated_sprite_2d.animation_finished
+	await get_tree().create_timer(0.5).timeout
 	damage_counter.visible = false
-	hurtbox.is_invincible = false
+#	hurtbox.is_invincible = false
+	knockback = false
 #	Sound.play(Sound.hurt)
 ##	Events.screen_shake.emit(3, 0.2)
 
 func reparent_camera():
 	camera_2d.reparent(get_tree().current_scene)
+
+func ghost_spawn():
+	var world = get_tree().current_scene
+	var ghost = GHOST_SCENE.instantiate()
+	ghost.set_property(position, $AnimatedSprite2D.flip_h, $AnimatedSprite2D.frame)
+	if ghost.flip_h == false:
+		ghost.position = position + Vector2(-10,-5)
+	else:
+		ghost.position = position + Vector2(10,-5)
+	
+	world.add_child(ghost)
+	
+func _on_ghost_timer_timeout():
+	ghost_spawn()
+
+func _on_invincibility_timer_timeout():
+	hurtbox.is_invincible = false

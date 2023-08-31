@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v4evn2poesb8"
-path="res://.godot/imported/1607.m00.i104.n038.S.c12.144577829 Open and closed house front door vector illustration.jpg-3925a5bfe381c14b33d1b91d5c77dc3f.ctex"
+uid="uid://biwtwgvlvid67"
+path="res://.godot/imported/tileset-1-nocollision-2.png-19a26f27a8bc7d7f81da6b857d7225d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://1607.m00.i104.n038.S.c12.144577829 Open and closed house front door vector illustration.jpg"
-dest_files=["res://.godot/imported/1607.m00.i104.n038.S.c12.144577829 Open and closed house front door vector illustration.jpg-3925a5bfe381c14b33d1b91d5c77dc3f.ctex"]
+source_file="res://tileset-1-nocollision-2.png"
+dest_files=["res://.godot/imported/tileset-1-nocollision-2.png-19a26f27a8bc7d7f81da6b857d7225d7.ctex"]
 
 [params]
 
