@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfmihe84doi2w"]
+[gd_scene load_steps=9 format=3 uid="uid://dfmihe84doi2w"]
 
 [ext_resource type="Script" path="res://UI.gd" id="1_82bdi"]
 [ext_resource type="PackedScene" uid="uid://ccrqgu7i5u3em" path="res://inventory.tscn" id="2_cc5jo"]
+[ext_resource type="PackedScene" uid="uid://n8qxxgs1va51" path="res://pause_menu.tscn" id="3_tilio"]
+[ext_resource type="PackedScene" uid="uid://ddh5mb1y8vwcb" path="res://coin.tscn" id="4_855on"]
+[ext_resource type="PackedScene" uid="uid://y2u6kgrf1npl" path="res://progress_bar_label.tscn" id="5_f0i4w"]
+[ext_resource type="PackedScene" uid="uid://cne2vkbuko74n" path="res://dialogue.tscn" id="6_pfj55"]
+[ext_resource type="PackedScene" uid="uid://coajboffwnhhm" path="res://enemy_name.tscn" id="7_ksl4d"]
+[ext_resource type="PackedScene" uid="uid://c8tyfd4ca44i5" path="res://hp_label.tscn" id="8_jv4lt"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_82bdi")
@@ -11,5 +17,25 @@ offset_left = 266.0
 offset_top = 5.0
 offset_right = 314.0
 offset_bottom = 21.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_tilio")]
+visible = false
+
+[node name="Coin" parent="." instance=ExtResource("4_855on")]
+
+[node name="ProgressBarLabel" parent="." instance=ExtResource("5_f0i4w")]
+
+[node name="Dialogue" parent="." instance=ExtResource("6_pfj55")]
+process_mode = 3
+visible = false
+
+[node name="EnemyName" parent="." instance=ExtResource("7_ksl4d")]
+visible = false
+offset_left = 262.0
+offset_top = 163.0
+offset_right = -3.0
+offset_bottom = 4.0
+
+[node name="HPLabel" parent="." instance=ExtResource("8_jv4lt")]
 
 [editable path="Inventory"]

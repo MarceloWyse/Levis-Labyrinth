@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddh5mb1y8vwcb"]
+
+[ext_resource type="Texture2D" uid="uid://drhqk3afughf7" path="res://Assets/coin_turning_animation.png" id="1_wybt7"]
+[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="2_rf6o6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyswd"]
+atlas = ExtResource("1_wybt7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0xy6"]
+atlas = ExtResource("1_wybt7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqvea"]
+atlas = ExtResource("1_wybt7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvccl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyswd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0xy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqvea")
+}],
+"loop": true,
+"name": &"turning",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dyjjf"]
+font = ExtResource("2_rf6o6")
+font_size = 10
+
+[node name="Coin" type="AnimatedSprite2D"]
+position = Vector2(240.786, 11.828)
+sprite_frames = SubResource("SpriteFrames_kvccl")
+animation = &"turning"
+autoplay = "turning"
+
+[node name="MoneyLabel" type="Label" parent="."]
+offset_left = 8.1011
+offset_top = -3.57772
+offset_right = 21.1011
+offset_bottom = 7.42228
+text = "100"
+label_settings = SubResource("LabelSettings_dyjjf")

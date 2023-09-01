@@ -1,8 +1,6 @@
 extends Panel
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var dialogue_1 = $"../../dialogue1"
-@onready var dialogue_2 = $"../../dialogue2"
 
 var playing = false
 var dialogue1 = false
@@ -34,7 +32,8 @@ func _process(_delta):
 			playing = false
 			dialogue1 = false
 			get_tree().paused = false
-			dialogue_1.queue_free()
+			$"../../dialogue1".queue_free()
+#			dialogue_1.queue_free()
 			
 	elif Input.is_action_just_pressed("dialogue") and dialogue2:
 		if cont == 0:
@@ -52,7 +51,7 @@ func _process(_delta):
 			playing = false
 			dialogue2 = false
 			get_tree().paused = false
-			dialogue_2.queue_free()
+			$"../../dialogue2".queue_free()
 			
 			
 			

@@ -1,21 +1,15 @@
-[gd_scene load_steps=69 format=3 uid="uid://dc57hhagdmg14"]
+[gd_scene load_steps=56 format=3 uid="uid://dc57hhagdmg14"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
 [ext_resource type="PackedScene" uid="uid://dfmihe84doi2w" path="res://ui.tscn" id="2_fy15p"]
-[ext_resource type="PackedScene" uid="uid://n8qxxgs1va51" path="res://pause_menu.tscn" id="3_qivui"]
 [ext_resource type="Script" path="res://Key.gd" id="3_yudsf"]
-[ext_resource type="PackedScene" uid="uid://cne2vkbuko74n" path="res://dialogue.tscn" id="4_5c66b"]
 [ext_resource type="Script" path="res://Door.gd" id="4_p7l7x"]
 [ext_resource type="Texture2D" uid="uid://c7iyho44hohwo" path="res://heart.png" id="7_x6esr"]
-[ext_resource type="Script" path="res://HPNumber.gd" id="9_8jsve"]
-[ext_resource type="PackedScene" uid="uid://coajboffwnhhm" path="res://enemy_name.tscn" id="10_8spjg"]
 [ext_resource type="Texture2D" uid="uid://cbeyo5fgbwg8l" path="res://door-Sheet.png" id="10_bsgxo"]
 [ext_resource type="PackedScene" uid="uid://yvvidq8dwd07" path="res://walking_enemy.tscn" id="10_xfj1e"]
 [ext_resource type="PackedScene" uid="uid://c85ne3234n830" path="res://tile_map.tscn" id="11_6idk1"]
-[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="11_c63c8"]
 [ext_resource type="Texture2D" uid="uid://w7i2b4en17mt" path="res://key.png" id="12_7am36"]
-[ext_resource type="Texture2D" uid="uid://drhqk3afughf7" path="res://Assets/coin_turning_animation.png" id="12_vpn3f"]
 [ext_resource type="Texture2D" uid="uid://c0sh8h0bgyw4v" path="res://silver_medal.png" id="13_eewf7"]
 [ext_resource type="Script" path="res://Lever.gd" id="14_ex33n"]
 [ext_resource type="Texture2D" uid="uid://4plvvmik3f1h" path="res://inc-door-Sheet.png" id="15_jfv74"]
@@ -35,47 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://btl8yebiv8yxn" path="res://hp_up.tscn" id="34_ubdrp"]
 [ext_resource type="PackedScene" uid="uid://vnuqtlx5qrgi" path="res://money_bag.tscn" id="37_doxqt"]
 [ext_resource type="PackedScene" uid="uid://c4hsj5avjv3ad" path="res://pigbank.tscn" id="38_npnn8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
-font_size = 8
-font_color = Color(0.913725, 0.709804, 0.776471, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qkjy5"]
-font_size = 10
-font_color = Color(0.85098, 0.756863, 0.92549, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dyjjf"]
-font = ExtResource("11_c63c8")
-font_size = 10
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyswd"]
-atlas = ExtResource("12_vpn3f")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0xy6"]
-atlas = ExtResource("12_vpn3f")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqvea"]
-atlas = ExtResource("12_vpn3f")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kvccl"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyswd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i0xy6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xqvea")
-}],
-"loop": true,
-"name": &"turning",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_elsyx"]
 size = Vector2(11, 9)
@@ -275,76 +228,6 @@ scale = Vector2(2.4, 2.4)
 
 [node name="UI" parent="." instance=ExtResource("2_fy15p")]
 layer = 5
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("3_qivui")]
-visible = false
-z_index = 3
-
-[node name="Dialogue" parent="UI" instance=ExtResource("4_5c66b")]
-process_mode = 3
-visible = false
-z_index = 2
-
-[node name="RichTextLabel" parent="UI/Dialogue" index="1"]
-metadata/_edit_use_anchors_ = true
-
-[node name="HP" type="Label" parent="UI"]
-z_index = 1
-offset_left = 7.42462
-offset_right = 47.4246
-offset_bottom = 26.0
-text = "HP"
-label_settings = SubResource("LabelSettings_70m4m")
-
-[node name="HPNumber" type="Label" parent="UI/HP"]
-layout_mode = 0
-offset_left = -8.83498
-offset_top = 9.97739
-offset_right = 20.165
-offset_bottom = 35.9774
-text = "2"
-label_settings = SubResource("LabelSettings_qkjy5")
-horizontal_alignment = 1
-script = ExtResource("9_8jsve")
-
-[node name="EnemyName" parent="UI" instance=ExtResource("10_8spjg")]
-visible = false
-offset_left = 254.652
-offset_top = 158.596
-offset_right = -10.3482
-offset_bottom = -5.40433
-
-[node name="Label" type="Label" parent="UI"]
-offset_left = 1.36932
-offset_top = 168.295
-offset_right = 49.3693
-offset_bottom = 179.295
-text = "Alfy's Cooldown: "
-label_settings = SubResource("LabelSettings_dyjjf")
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/Label"]
-layout_mode = 0
-offset_left = 61.5638
-offset_top = -3.39685
-offset_right = 76.5638
-offset_bottom = 11.6031
-theme_override_font_sizes/font_size = 6
-max_value = 10.0
-step = 0.1
-
-[node name="Coin" type="AnimatedSprite2D" parent="UI"]
-position = Vector2(240.786, 11.828)
-sprite_frames = SubResource("SpriteFrames_kvccl")
-animation = &"turning"
-autoplay = "turning"
-
-[node name="MoneyLabel" type="Label" parent="UI/Coin"]
-offset_left = 8.1011
-offset_top = -3.57772
-offset_right = 21.1011
-offset_bottom = 7.42228
-text = "100"
-label_settings = SubResource("LabelSettings_dyjjf")
 
 [node name="Key" type="Area2D" parent="."]
 position = Vector2(-17, 138)
@@ -606,8 +489,6 @@ position = Vector2(428.416, -86.7398)
 [connection signal="body_entered" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_entered"]
 [connection signal="body_exited" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_exited"]
 
-[editable path="UI/Dialogue"]
-[editable path="UI/EnemyName"]
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
 [editable path="MovingPlatform3"]

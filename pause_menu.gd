@@ -1,6 +1,5 @@
 extends ColorRect
 
-@onready var hp_up = $"../../HP_UP"
 @onready var dialogue = $"../Dialogue"
 var pause = false: 
 	set(value):

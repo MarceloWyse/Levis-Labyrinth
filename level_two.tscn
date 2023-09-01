@@ -1,35 +1,67 @@
-[gd_scene load_steps=7 format=3 uid="uid://let4mvfbhd1s"]
+[gd_scene load_steps=4 format=3 uid="uid://let4mvfbhd1s"]
 
-[ext_resource type="PackedScene" uid="uid://c85ne3234n830" path="res://tile_map.tscn" id="1_mw0jb"]
-[ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="2_4mjdi"]
-[ext_resource type="PackedScene" uid="uid://dfmihe84doi2w" path="res://ui.tscn" id="3_4gdsw"]
-[ext_resource type="Script" path="res://Key.gd" id="4_smfdv"]
-[ext_resource type="Texture2D" uid="uid://c7iyho44hohwo" path="res://heart.png" id="5_j4qv5"]
+[ext_resource type="Script" path="res://level_two.gd" id="1_bvkbh"]
+[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="2_v625g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eka2h"]
-size = Vector2(9, 9.25)
+[sub_resource type="LabelSettings" id="LabelSettings_fqk3x"]
+font = ExtResource("2_v625g")
+font_size = 19
 
-[node name="LevelTwo" type="Node2D"]
+[node name="LevelTwo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bvkbh")
 
-[node name="TileMap" parent="." instance=ExtResource("1_mw0jb")]
-layer_0/tile_data = PackedInt32Array(589825, 0, 0, 589826, 65536, 0, 589827, 65536, 0, 589828, 65536, 0, 589829, 65536, 0, 589830, 65536, 0, 589831, 65536, 0, 589832, 65536, 0, 589833, 65536, 0, 589834, 65536, 0, 589835, 65536, 0, 589836, 65536, 0, 589837, 65536, 0, 589838, 65536, 0, 589839, 65536, 0, 589840, 65536, 0, 655361, 262144, 0, 655362, 262144, 0, 655363, 262144, 0, 655364, 262144, 0, 655365, 262144, 0, 655366, 262144, 0, 655367, 262144, 0, 655368, 262144, 0, 655369, 262144, 0, 655370, 262144, 0, 655371, 262144, 0, 655372, 262144, 0, 655373, 262144, 0, 655374, 262144, 0, 655375, 262144, 0, 655376, 262144, 0)
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Levi" parent="." instance=ExtResource("2_4mjdi")]
-position = Vector2(60, 143)
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.156863, 0.733333, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -9.0
+offset_right = 95.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Levi's story will continue soon..."
+label_settings = SubResource("LabelSettings_fqk3x")
+horizontal_alignment = 1
 
-[node name="UI" parent="." instance=ExtResource("3_4gdsw")]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
 
-[node name="Heart3" type="Area2D" parent="."]
-position = Vector2(110, -2)
-collision_mask = 3
-script = ExtResource("4_smfdv")
+[node name="Button" type="Button" parent="."]
+modulate = Color(0.878431, 0.878431, 0.878431, 1)
+self_modulate = Color(0.776471, 0.776471, 0.776471, 1)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 125.0
+offset_right = 182.0
+offset_bottom = 156.0
+theme_override_colors/font_color = Color(0.156863, 0.733333, 0.929412, 1)
+theme_override_colors/font_pressed_color = Color(0.14902, 0.439216, 0.556863, 1)
+theme_override_colors/font_hover_color = Color(0.156863, 0.733333, 0.929412, 1)
+theme_override_colors/font_focus_color = Color(0.14902, 0.439216, 0.556863, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_font_sizes/font_size = 9
+text = "Quit"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Heart3"]
-position = Vector2(43.5, 139.625)
-shape = SubResource("RectangleShape2D_eka2h")
-
-[node name="Sprite2D" type="Sprite2D" parent="Heart3"]
-position = Vector2(44, 140)
-texture = ExtResource("5_j4qv5")
-
-[connection signal="body_entered" from="Heart3" to="Heart3" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

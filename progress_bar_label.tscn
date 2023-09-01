@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://y2u6kgrf1npl"]
+
+[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="1_xcoct"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dyjjf"]
+font = ExtResource("1_xcoct")
+font_size = 10
+
+[node name="ProgressBarLabel" type="Label"]
+offset_left = 1.36932
+offset_top = 168.295
+offset_right = 49.3693
+offset_bottom = 179.295
+text = "Alfy's Cooldown: "
+label_settings = SubResource("LabelSettings_dyjjf")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 61.5638
+offset_top = -3.39685
+offset_right = 76.5638
+offset_bottom = 11.6031
+theme_override_font_sizes/font_size = 6
+max_value = 10.0
+step = 0.1

@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var label = $DamageCounter/Label
 @onready var damage_counter = $DamageCounter
 @onready var camera_2d = $Camera2D
-@onready var progress_bar = $"../UI/Label/ProgressBar"
+@onready var progress_bar = $"../UI/ProgressBarLabel/ProgressBar"
 @onready var money_label = $"../UI/Coin/MoneyLabel"
 @onready var dash_timer = $DashTimer
 @onready var alfy = $Alfy
