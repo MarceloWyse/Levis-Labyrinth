@@ -1,19 +1,18 @@
 extends CharacterBody2D
 
+@onready var levi = $"../../Levi"
+@onready var enemy_name = $"../../UI/EnemyName"
 @onready var damage_taken = $DamageTaken
 @onready var stats = $Stats
 @onready var hitbox = $Hitbox
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var hurtbox = $Hurtbox
-@onready var levi = $"../../Levi"
-@onready var enemy_name = $"../../UI/EnemyName"
 @onready var ray_cast_left = $RayCastLeft
 @onready var ray_cast_right = $RayCastRight
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var fire = $Fire
 @onready var timer = $Timer
 
-const MONEY_SCENE = preload("res://money_bag.tscn")
 const ENEMY_BULLET_SCENE = preload("res://enemy_bullet.tscn")
 var death = false
 var death_vfx = preload("res://death_effect.tscn")
@@ -39,17 +38,17 @@ func fire_bullet():
 func _process(_delta):
 
 	if not chasing:
-		$AnimationPlayer.play("move")
+		$AnimationPlayer.play("agorafobus_move")
 
 	if ray_cast_left.is_colliding():
 		animated_sprite_2d.flip_h = false
 		left_collided = true
 		chasing = true
-
+#
 		if timer.time_left == 0:
 			timer.start()
 			fire_bullet()
-#	
+		
 	if not ray_cast_left.is_colliding() and left_collided:
 		left_collided = false
 		chasing = false
@@ -61,17 +60,13 @@ func _process(_delta):
 		if timer.time_left == 0:
 			timer.start()
 			fire_bullet()
-
+#
 	if not ray_cast_right.is_colliding() and right_collided:
 		right_collided = false
 		chasing = false
 
 func _on_stats_no_health():
 	if death : return
-	var money_bag = MONEY_SCENE.instantiate()
-	money_bag.global_position = global_position + Vector2(0, -15)
-	var world = get_tree().current_scene
-	world.add_child.call_deferred(money_bag)
 	hitbox.queue_free()	
 	hurtbox.queue_free()
 	var my_tween = create_tween()
@@ -84,9 +79,9 @@ func _on_stats_no_health():
 
 func _on_hurtbox_hurt(_hitbox, damage):
 	Sound.play(Sound.hit)
+	enemy_name.get_node("TextureRect/Label").text = "Agorafobus"
 	enemy_name.visible = true
 	stats.health -= damage
-	enemy_name.get_node("TextureRect/Label").text = "Agorafobia"
 	damage_taken.visible = true
 	damage_taken.get_node("Label").text = str(damage)
 	await get_tree().create_timer(1).timeout

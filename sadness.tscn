@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d0kuhrlrlq665"]
 
 [ext_resource type="Script" path="res://sadness.gd" id="1_ds43c"]
-[ext_resource type="Texture2D" uid="uid://cdclpcf1cgtr8" path="res://Sprite Sheet Tristeza.png" id="1_sh3ij"]
+[ext_resource type="Texture2D" uid="uid://cdclpcf1cgtr8" path="res://sadness_sheet.png" id="1_sh3ij"]
 [ext_resource type="PackedScene" uid="uid://dk1djiye3iyvm" path="res://stats.tscn" id="3_ers66"]
 [ext_resource type="PackedScene" uid="uid://pjgm2mcjmuj2" path="res://hitbox.tscn" id="4_5xjmi"]
 [ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="5_c1fs4"]

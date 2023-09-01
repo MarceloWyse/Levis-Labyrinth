@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://levi.gd" id="1_7fpum"]
 [ext_resource type="PackedScene" uid="uid://3pq3osh74kpo" path="res://ghost.tscn" id="2_cpcxf"]
-[ext_resource type="Texture2D" uid="uid://cx33gs2n7seop" path="res://Sprite-Ladder-Sheet.png" id="2_d3sa4"]
+[ext_resource type="Texture2D" uid="uid://cx33gs2n7seop" path="res://levi_ladder_climb_sheet.png" id="3_bxy8j"]
 [ext_resource type="Texture2D" uid="uid://bnnno7aeys0ar" path="res://Dash_NoDust/Warrior_Dash_1.png" id="3_ipyd5"]
 [ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="4_3lsar"]
 [ext_resource type="Texture2D" uid="uid://cougoyn36rx6i" path="res://Dash_NoDust/Warrior_Dash_2.png" id="4_gg7dy"]
@@ -14,53 +14,53 @@
 [ext_resource type="Texture2D" uid="uid://bm17cf2w14bsn" path="res://Dash_NoDust/Warrior_Dash_5.png" id="7_tqjjy"]
 [ext_resource type="Texture2D" uid="uid://cvu6qog6hmoww" path="res://Dash_NoDust/Warrior_Dash_6.png" id="8_xw2m4"]
 [ext_resource type="Texture2D" uid="uid://dlnixdvjjyqgg" path="res://Dash_NoDust/Warrior_Dash_7.png" id="9_uqjpn"]
-[ext_resource type="Texture2D" uid="uid://cpmflkfm3lf4n" path="res://levi_idle.png" id="11_3ldhw"]
-[ext_resource type="Texture2D" uid="uid://b7hcyo20ow15n" path="res://Levi-walk-cycle-outline.png" id="12_8x754"]
-[ext_resource type="Texture2D" uid="uid://c33gutq8k2de7" path="res://Jump-Sprite-outline-2.png" id="12_mrn1v"]
-[ext_resource type="Texture2D" uid="uid://bwb1ca7gh8gjf" path="res://Sprite-punch-Sheet.png" id="13_coff2"]
+[ext_resource type="Texture2D" uid="uid://cpmflkfm3lf4n" path="res://levi_idle_sheet.png" id="11_3ldhw"]
+[ext_resource type="Texture2D" uid="uid://c33gutq8k2de7" path="res://levi_jump_sheet.png" id="11_mosid"]
 [ext_resource type="Texture2D" uid="uid://q4nq8gh7phhj" path="res://Knockback-sprite-Sheet-test.png" id="13_oxyvt"]
+[ext_resource type="Texture2D" uid="uid://bwb1ca7gh8gjf" path="res://levi_punch_sheet.png" id="14_6liwt"]
+[ext_resource type="Texture2D" uid="uid://b7hcyo20ow15n" path="res://levi_walk_sheet.png" id="15_1ahm5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qothd"]
 radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2k1m"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qes1x"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmi1d"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gxh6"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_daaao"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgmnj"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byeae"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3eyh"]
-atlas = ExtResource("2_d3sa4")
+atlas = ExtResource("3_bxy8j")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0oco"]
-atlas = ExtResource("12_mrn1v")
+atlas = ExtResource("11_mosid")
 region = Rect2(144, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvox7"]
-atlas = ExtResource("12_mrn1v")
+atlas = ExtResource("11_mosid")
 region = Rect2(192, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_or37u"]
@@ -120,15 +120,15 @@ atlas = ExtResource("11_3ldhw")
 region = Rect2(624, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rl07"]
-atlas = ExtResource("12_mrn1v")
+atlas = ExtResource("11_mosid")
 region = Rect2(0, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jskjf"]
-atlas = ExtResource("12_mrn1v")
+atlas = ExtResource("11_mosid")
 region = Rect2(48, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oy7dk"]
-atlas = ExtResource("12_mrn1v")
+atlas = ExtResource("11_mosid")
 region = Rect2(96, 0, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hocik"]
@@ -148,59 +148,59 @@ atlas = ExtResource("13_oxyvt")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_luchk"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1a4sp"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_saq8l"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nna84"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5xsy"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q05qb"]
-atlas = ExtResource("13_coff2")
+atlas = ExtResource("14_6liwt")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxcvd"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnynd"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdfmf"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hfm6"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vd60n"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p8qt5"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvjda"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0eeev"]
-atlas = ExtResource("12_8x754")
+atlas = ExtResource("15_1ahm5")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pkqc7"]
@@ -410,7 +410,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AlfyTest:position")
+tracks/0/path = NodePath("Alfy:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -437,7 +437,7 @@ resource_name = "alfy_test_left"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AlfyTest:position")
+tracks/0/path = NodePath("Alfy:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -449,7 +449,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AlfyTest/Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Alfy/Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -464,7 +464,7 @@ resource_name = "alfy_test_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AlfyTest:position")
+tracks/0/path = NodePath("Alfy:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -476,7 +476,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AlfyTest/Hitbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Alfy/Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -626,16 +626,16 @@ position = Vector2(-34, -3)
 shape = SubResource("CapsuleShape2D_6d7jm")
 disabled = true
 
-[node name="AlfyTest" parent="." instance=ExtResource("6_hbwph")]
+[node name="Alfy" parent="." instance=ExtResource("6_hbwph")]
 position = Vector2(-15, -27)
 scale = Vector2(0.625, 0.625)
 
-[node name="Hitbox" parent="AlfyTest" instance=ExtResource("5_r50r7")]
+[node name="Hitbox" parent="Alfy" instance=ExtResource("5_r50r7")]
 collision_layer = 0
 collision_mask = 16
 damage = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AlfyTest/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alfy/Hitbox"]
 shape = SubResource("CircleShape2D_fk6ro")
 disabled = true
 

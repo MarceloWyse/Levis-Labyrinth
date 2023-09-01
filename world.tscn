@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dw0veek4u0c0f"]
+[gd_scene load_steps=69 format=3 uid="uid://dc57hhagdmg14"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://jcsijd2gratx" path="res://levi.tscn" id="1_w5emb"]
@@ -6,34 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://n8qxxgs1va51" path="res://pause_menu.tscn" id="3_qivui"]
 [ext_resource type="Script" path="res://Key.gd" id="3_yudsf"]
 [ext_resource type="PackedScene" uid="uid://cne2vkbuko74n" path="res://dialogue.tscn" id="4_5c66b"]
-[ext_resource type="Texture2D" uid="uid://w7i2b4en17mt" path="res://chave .png" id="4_a55cx"]
 [ext_resource type="Script" path="res://Door.gd" id="4_p7l7x"]
 [ext_resource type="Texture2D" uid="uid://c7iyho44hohwo" path="res://heart.png" id="7_x6esr"]
-[ext_resource type="Texture2D" uid="uid://c0sh8h0bgyw4v" path="res://medalha1.png" id="7_yic50"]
 [ext_resource type="Script" path="res://HPNumber.gd" id="9_8jsve"]
 [ext_resource type="PackedScene" uid="uid://coajboffwnhhm" path="res://enemy_name.tscn" id="10_8spjg"]
 [ext_resource type="Texture2D" uid="uid://cbeyo5fgbwg8l" path="res://door-Sheet.png" id="10_bsgxo"]
 [ext_resource type="PackedScene" uid="uid://yvvidq8dwd07" path="res://walking_enemy.tscn" id="10_xfj1e"]
 [ext_resource type="PackedScene" uid="uid://c85ne3234n830" path="res://tile_map.tscn" id="11_6idk1"]
 [ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="11_c63c8"]
+[ext_resource type="Texture2D" uid="uid://w7i2b4en17mt" path="res://key.png" id="12_7am36"]
 [ext_resource type="Texture2D" uid="uid://drhqk3afughf7" path="res://Assets/coin_turning_animation.png" id="12_vpn3f"]
+[ext_resource type="Texture2D" uid="uid://c0sh8h0bgyw4v" path="res://silver_medal.png" id="13_eewf7"]
 [ext_resource type="Script" path="res://Lever.gd" id="14_ex33n"]
-[ext_resource type="Texture2D" uid="uid://bmxp2le8ry21e" path="res://lever-Sheet.png" id="14_f7k5k"]
 [ext_resource type="Texture2D" uid="uid://4plvvmik3f1h" path="res://inc-door-Sheet.png" id="15_jfv74"]
 [ext_resource type="Script" path="res://Button.gd" id="17_phbpo"]
 [ext_resource type="Script" path="res://tile_map.gd" id="17_xhp0c"]
-[ext_resource type="Texture2D" uid="uid://bituovdn688mj" path="res://botão.png" id="18_owq7d"]
-[ext_resource type="Texture2D" uid="uid://gh8yf0c350kd" path="res://statue.png" id="19_pg6r5"]
 [ext_resource type="Script" path="res://Ball.gd" id="19_qow65"]
-[ext_resource type="Texture2D" uid="uid://dgepf7s3kvfq5" path="res://parallax-mountain-bg.png" id="21_loasu"]
+[ext_resource type="Texture2D" uid="uid://bmxp2le8ry21e" path="res://lever_sheet.png" id="20_l1uat"]
 [ext_resource type="Script" path="res://BG.gd" id="21_xdt34"]
-[ext_resource type="Texture2D" uid="uid://cuft1o454esp6" path="res://parallax-mountain-montain-far.png" id="22_tch83"]
-[ext_resource type="Texture2D" uid="uid://bq7m1vlrrbdvo" path="res://parallax-mountain-foreground-trees.png" id="23_vm8wy"]
+[ext_resource type="Texture2D" uid="uid://bituovdn688mj" path="res://button.png" id="23_p30w5"]
 [ext_resource type="Texture2D" uid="uid://dmjxf5eff7dej" path="res://stairs.png" id="25_clgs1"]
 [ext_resource type="Script" path="res://Stairs.gd" id="25_fivxl"]
-[ext_resource type="Texture2D" uid="uid://c2qaixfpurjnp" path="res://painting.png" id="28_kwkm3"]
+[ext_resource type="Texture2D" uid="uid://gh8yf0c350kd" path="res://ball.png" id="25_q0h7k"]
+[ext_resource type="Texture2D" uid="uid://c2qaixfpurjnp" path="res://bg_painting.png" id="28_6v6tu"]
 [ext_resource type="PackedScene" uid="uid://cv2f0jq1yumkb" path="res://moving_platform.tscn" id="29_5fu4w"]
-[ext_resource type="PackedScene" uid="uid://b5imxbng84xwc" path="res://blob_2.tscn" id="32_afvkg"]
+[ext_resource type="PackedScene" uid="uid://b5imxbng84xwc" path="res://agorafobus.tscn" id="32_afvkg"]
 [ext_resource type="PackedScene" uid="uid://d0kuhrlrlq665" path="res://sadness.tscn" id="33_045rd"]
 [ext_resource type="PackedScene" uid="uid://btl8yebiv8yxn" path="res://hp_up.tscn" id="34_ubdrp"]
 [ext_resource type="PackedScene" uid="uid://vnuqtlx5qrgi" path="res://money_bag.tscn" id="37_doxqt"]
@@ -132,11 +129,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8lrc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0c6v"]
-atlas = ExtResource("14_f7k5k")
+atlas = ExtResource("20_l1uat")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3k7x"]
-atlas = ExtResource("14_f7k5k")
+atlas = ExtResource("20_l1uat")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ei84m"]
@@ -185,19 +182,19 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lju5a"]
-atlas = ExtResource("18_owq7d")
+atlas = ExtResource("23_p30w5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rm6p"]
-atlas = ExtResource("18_owq7d")
+atlas = ExtResource("23_p30w5")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7y7o"]
-atlas = ExtResource("18_owq7d")
+atlas = ExtResource("23_p30w5")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rr4wc"]
-atlas = ExtResource("18_owq7d")
+atlas = ExtResource("23_p30w5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_28eer"]
@@ -255,7 +252,6 @@ motion_mirroring = Vector2(650, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
 position = Vector2(-5.46806, 16.8867)
 scale = Vector2(2.44311, 2.70599)
-texture = ExtResource("21_loasu")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Background"]
 motion_mirroring = Vector2(650, 0)
@@ -263,7 +259,6 @@ motion_mirroring = Vector2(650, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer2"]
 position = Vector2(-2.89543, 41.3121)
 scale = Vector2(2.4, 2.4)
-texture = ExtResource("22_tch83")
 
 [node name="Foreground" type="ParallaxBackground" parent="."]
 layer = 1
@@ -277,7 +272,6 @@ motion_scale = Vector2(1.5, 1)
 [node name="Sprite2D" type="Sprite2D" parent="Foreground/ParallaxLayer2"]
 position = Vector2(-62.2924, -10.3067)
 scale = Vector2(2.4, 2.4)
-texture = ExtResource("23_vm8wy")
 
 [node name="UI" parent="." instance=ExtResource("2_fy15p")]
 layer = 5
@@ -364,7 +358,7 @@ shape = SubResource("RectangleShape2D_elsyx")
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
 position = Vector2(-0.5, 0.5)
 scale = Vector2(0.9375, 0.9375)
-texture = ExtResource("4_a55cx")
+texture = ExtResource("12_7am36")
 
 [node name="Medal" type="Area2D" parent="."]
 position = Vector2(19, 140)
@@ -378,7 +372,7 @@ shape = SubResource("RectangleShape2D_ghqed")
 [node name="Sprite2D" type="Sprite2D" parent="Medal"]
 position = Vector2(-1, -2)
 scale = Vector2(0.625, 0.625001)
-texture = ExtResource("7_yic50")
+texture = ExtResource("13_eewf7")
 
 [node name="Trophy" type="Area2D" parent="."]
 position = Vector2(102.42, -6.47157)
@@ -506,7 +500,7 @@ script = ExtResource("19_qow65")
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 position = Vector2(1.58919, 2.45)
 scale = Vector2(0.78125, 0.78125)
-texture = ExtResource("19_pg6r5")
+texture = ExtResource("25_q0h7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 position = Vector2(0.3125, 13.375)
@@ -529,7 +523,7 @@ shape = SubResource("RectangleShape2D_u215d")
 [node name="Painting" type="Sprite2D" parent="."]
 position = Vector2(-244.751, 59.4144)
 scale = Vector2(0.443188, 0.443188)
-texture = ExtResource("28_kwkm3")
+texture = ExtResource("28_6v6tu")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("29_5fu4w")]
 position = Vector2(228.328, -235.463)
@@ -583,12 +577,12 @@ position = Vector2(15.5824, 0)
 position = Vector2(249.464, -96.069)
 
 [node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(383.175, -82.2902)
+position = Vector2(-90.1294, -0.234932)
 collision_mask = 161
 
 [node name="Walker2" type="Node2D" parent="."]
 
-[node name="Blob2" parent="Walker2" instance=ExtResource("32_afvkg")]
+[node name="Agorafobus" parent="Walker2" instance=ExtResource("32_afvkg")]
 
 [node name="HP_UP" parent="." instance=ExtResource("34_ubdrp")]
 process_mode = 3

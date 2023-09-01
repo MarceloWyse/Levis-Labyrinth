@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpuowerilwty5"]
 
 [ext_resource type="PackedScene" uid="uid://b2i8b5stiwy1n" path="res://projectile.tscn" id="1_sowb2"]
-[ext_resource type="Texture2D" uid="uid://ckdtelqjlhq28" path="res://blob-eye-Sheet.png" id="2_h004y"]
+[ext_resource type="Texture2D" uid="uid://ckdtelqjlhq28" path="res://agorafobia_eye_sheet.png" id="2_h004y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4e6bd"]
 size = Vector2(9, 9)

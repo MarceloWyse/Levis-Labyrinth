@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://walking_enemy.gd" id="1_ugjxi"]
 [ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="2_ojyvu"]
-[ext_resource type="Texture2D" uid="uid://dbiyh4muxc8e7" path="res://enemies-blob-Sheet.png" id="2_ruv4j"]
+[ext_resource type="Texture2D" uid="uid://dbiyh4muxc8e7" path="res://agorafobia_sheet.png" id="2_ruv4j"]
 [ext_resource type="PackedScene" uid="uid://dk1djiye3iyvm" path="res://stats.tscn" id="4_34xga"]
 [ext_resource type="PackedScene" uid="uid://pjgm2mcjmuj2" path="res://hitbox.tscn" id="5_jr5b6"]
 [ext_resource type="PackedScene" uid="uid://b6j016gflf0kf" path="res://damage_taken.tscn" id="6_sllv4"]
