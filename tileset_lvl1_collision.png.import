@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvaum855nmltt"
-path="res://.godot/imported/Warrior_Dash_4.png-2034b934eeeb739c16f22599318fb13d.ctex"
+uid="uid://dln8brj1df0ln"
+path="res://.godot/imported/tileset_lvl1_collision.png-0963b3a7eb9ec966f99ffd6c5f0021b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dash_NoDust/Warrior_Dash_4.png"
-dest_files=["res://.godot/imported/Warrior_Dash_4.png-2034b934eeeb739c16f22599318fb13d.ctex"]
+source_file="res://tileset_lvl1_collision.png"
+dest_files=["res://.godot/imported/tileset_lvl1_collision.png-0963b3a7eb9ec966f99ffd6c5f0021b8.ctex"]
 
 [params]
 

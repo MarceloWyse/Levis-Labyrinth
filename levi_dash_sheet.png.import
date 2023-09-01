@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4aw8nd5wmua"
-path="res://.godot/imported/tileset-lvl1.png-170e716465c8c6e556469b6d1680065e.ctex"
+uid="uid://cyorqqhamavo6"
+path="res://.godot/imported/levi_dash_sheet.png-b1d8d7828cd402b245ce21e7eb6f3256.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tileset-lvl1.png"
-dest_files=["res://.godot/imported/tileset-lvl1.png-170e716465c8c6e556469b6d1680065e.ctex"]
+source_file="res://levi_dash_sheet.png"
+dest_files=["res://.godot/imported/levi_dash_sheet.png-b1d8d7828cd402b245ce21e7eb6f3256.ctex"]
 
 [params]
 

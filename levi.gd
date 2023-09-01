@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var dash_timer = $DashTimer
 @onready var alfy = $Alfy
 @onready var hitbox = $Alfy/Hitbox
+@onready var stairs = $"../Stairs"
 
 @export var GHOST_SCENE : PackedScene
 var money : int = 0
@@ -23,6 +24,7 @@ var medal = false
 var trophy = false
 var initial_position
 var punching = false
+var dashing = false
 var knockback = false
 const SPEED = 100.0
 const JUMP_VELOCITY = -340.0
@@ -82,11 +84,13 @@ func _physics_process(delta):
 		if velocity.y > 0:
 			animated_sprite_2d.play("jump")
 
-		if velocity.y < 0:
+		if velocity.y < 0 and not dashing:
 			animated_sprite_2d.play("fall")
 
 	if not is_on_floor():
-		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0:
+		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing:
+			dashing = true
+			animated_sprite_2d.play("dash")
 			$GhostTimer.start()
 			if animated_sprite_2d.flip_h == false:
 				var my_tween = get_tree().create_tween()
@@ -99,6 +103,7 @@ func _physics_process(delta):
 			dash_timer.start()
 			await get_tree().create_timer(0.7).timeout
 			$GhostTimer.stop()
+			dashing = false
 			
 	if not direction and velocity.y == 0 and not punching and not knockback:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -123,7 +128,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	if was_on_floor and not is_on_floor() and not knockback:
+	if was_on_floor and not is_on_floor() and not knockback and not dashing:
 		animated_sprite_2d.play("fall")
 
 	for i in get_slide_collision_count():
