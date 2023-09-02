@@ -90,19 +90,22 @@ func _physics_process(delta):
 	if not is_on_floor():
 		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing:
 			dashing = true
+			gravity = 0
+			
 			animated_sprite_2d.play("dash")
 			$GhostTimer.start()
 			if animated_sprite_2d.flip_h == false:
 				var my_tween = get_tree().create_tween()
-				my_tween.tween_property(self, "velocity:x", velocity.x + 350, 0.4)
+				my_tween.tween_property(self, "velocity:x", 250, 0.2)
 #				
 			else:
 				var my_tween = get_tree().create_tween()
-				my_tween.tween_property(self, "velocity:x", velocity.x - 350, 0.4)
+				my_tween.tween_property(self, "velocity:x", velocity.x - 250, 0.2)
 #				
 			dash_timer.start()
 			await get_tree().create_timer(0.7).timeout
 			$GhostTimer.stop()
+			gravity = 900 
 			dashing = false
 			
 	if not direction and velocity.y == 0 and not punching and not knockback:

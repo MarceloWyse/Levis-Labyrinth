@@ -310,6 +310,7 @@ script = ExtResource("17_xhp0c")
 [node name="dialogue1" type="Area2D" parent="."]
 position = Vector2(104, 132)
 collision_mask = 3
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue1"]
 shape = SubResource("RectangleShape2D_d8lrc")
@@ -317,6 +318,7 @@ shape = SubResource("RectangleShape2D_d8lrc")
 [node name="dialogue2" type="Area2D" parent="."]
 position = Vector2(326, -11)
 collision_mask = 3
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue2"]
 shape = SubResource("RectangleShape2D_d8lrc")
