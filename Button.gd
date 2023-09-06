@@ -18,9 +18,9 @@ func _on_body_entered(body):
 	if body is Ball or body is Player:
 		if not pressed:
 			button_press.play("press")
-			emit_signal("enable_tilemap")
+			emit_signal("disable_tilemap")
 		if body is Ball:
-			emit_signal("enable_tilemap")
+			emit_signal("disable_tilemap")
 			pressed = true
 			await get_tree().create_timer(0.2).timeout
 			ball.set_deferred("freeze", true)
@@ -30,4 +30,4 @@ func _on_body_exited(body):
 	if body is Ball or body is Player:
 		if not pressed:
 			button_press.play("unpressed")
-			emit_signal("disable_tilemap")
+			emit_signal("enable_tilemap")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdclpcf1cgtr8"
-path="res://.godot/imported/sadness_sheet.png-d21507f48fb4f64328d40c516870abd7.ctex"
+uid="uid://cy35ud06xn50x"
+path="res://.godot/imported/cabinet.png-1535f447e6a10e08637ccdb3d71cb992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sadness_sheet.png"
-dest_files=["res://.godot/imported/sadness_sheet.png-d21507f48fb4f64328d40c516870abd7.ctex"]
+source_file="res://Assets/cabinet.png"
+dest_files=["res://.godot/imported/cabinet.png-1535f447e6a10e08637ccdb3d71cb992.ctex"]
 
 [params]
 

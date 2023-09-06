@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var alfy = $Alfy
 @onready var hitbox = $Alfy/Hitbox
 @onready var stairs = $"../Stairs"
+@onready var stairs_2 = $"../Stairs2"
 
 @export var GHOST_SCENE : PackedScene
 
@@ -112,8 +113,8 @@ func _on_invincibility_timer_timeout():
 func respawn():
 	if global_position.y > 500:
 			PlayerStats.health -= 2
-#			global_position = initial_position
-			global_position = Vector2(-245,100)
+			global_position = initial_position
+#			global_position = Vector2(-245,100)
 
 func alfy_attack():
 	if animated_sprite_2d.flip_h == false:
@@ -161,12 +162,12 @@ func jump():
 			animated_sprite_2d.play("jump")
 
 func fall():
-	if velocity.y < 0 and not dashing and not knockback:
+	if velocity.y < 0 and not dashing and not knockback and not punching:
 		animated_sprite_2d.play("fall")
 
 func dash():
 	if not is_on_floor():
-		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing:
+		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right") :
 			dashing = true
 			gravity = 0
 			animated_sprite_2d.play("dash")

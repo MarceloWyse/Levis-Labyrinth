@@ -1,14 +1,13 @@
 extends Area2D
 
+@onready var stairs = $"../Stairs"
 @onready var levi = $"../Levi"
-@onready var stairs_2 = $"../Stairs2"
-
 var climbing = false
 
 func _process(_delta):
-	if not levi: return
+	if not levi : return
 	elif overlaps_body(levi):
-		stairs_2.set_process(false)
+		stairs.set_process(false)
 		if Input.is_action_pressed("ui_up"):
 			climbing = true
 			levi.get_node("AnimatedSprite2D").play("climb")
@@ -19,7 +18,8 @@ func _process(_delta):
 			levi.gravity = 900
 	else:
 		levi.gravity = 900
-		stairs_2.set_process(true)
+		stairs.set_process(true)
 		climbing = false
 
 	
+

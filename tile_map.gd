@@ -3,7 +3,7 @@ extends TileMap
 @onready var button = $"../GroundButton/Button"
 
 func _ready():
-	set_layer_enabled(1,false)
+	set_layer_enabled(1,true)
 	button.connect("enable_tilemap", showTilemap)
 	button.connect("disable_tilemap", hideTilemap)
 
