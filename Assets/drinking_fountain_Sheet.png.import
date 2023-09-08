@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b02k4pr6tdbxl"
-path="res://.godot/imported/dpressed.png-127d93b1bd36b59daa6d54b83e53aa46.ctex"
+uid="uid://x4wglkh6qnrg"
+path="res://.godot/imported/drinking_fountain_Sheet.png-268dc395b97ad40705cba993959dfa83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/dpressed.png"
-dest_files=["res://.godot/imported/dpressed.png-127d93b1bd36b59daa6d54b83e53aa46.ctex"]
+source_file="res://Assets/drinking_fountain_Sheet.png"
+dest_files=["res://.godot/imported/drinking_fountain_Sheet.png-268dc395b97ad40705cba993959dfa83.ctex"]
 
 [params]
 

@@ -12,7 +12,7 @@ var walk_forward = false
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-func _process(delta):
+func _process(_delta):
 	
 	move_and_slide()
 	

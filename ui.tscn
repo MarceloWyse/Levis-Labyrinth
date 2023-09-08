@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfmihe84doi2w"]
+[gd_scene load_steps=9 format=3 uid="uid://dfmihe84doi2w"]
 
 [ext_resource type="Script" path="res://UI.gd" id="1_82bdi"]
 [ext_resource type="PackedScene" uid="uid://ccrqgu7i5u3em" path="res://inventory.tscn" id="2_cc5jo"]
@@ -8,23 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cne2vkbuko74n" path="res://dialogue.tscn" id="6_pfj55"]
 [ext_resource type="PackedScene" uid="uid://coajboffwnhhm" path="res://enemy_name.tscn" id="7_ksl4d"]
 [ext_resource type="PackedScene" uid="uid://c8tyfd4ca44i5" path="res://hp_label.tscn" id="8_jv4lt"]
-[ext_resource type="Texture2D" uid="uid://kt3hgmdy2r65" path="res://Assets/up.png" id="9_t7t8f"]
-[ext_resource type="Texture2D" uid="uid://qynlxqstwp6x" path="res://Assets/uppressed.png" id="10_eodml"]
-[ext_resource type="Texture2D" uid="uid://coeijnt2bkhie" path="res://Assets/down.png" id="11_flkqr"]
-[ext_resource type="Texture2D" uid="uid://b02k4pr6tdbxl" path="res://Assets/dpressed.png" id="12_745aj"]
-[ext_resource type="Texture2D" uid="uid://36t322c1hh15" path="res://Assets/left.png" id="13_b15rr"]
-[ext_resource type="Texture2D" uid="uid://cemmsp5fuhxe2" path="res://Assets/leftpressed.png" id="14_4norr"]
-[ext_resource type="Texture2D" uid="uid://b07nud3ygfqu4" path="res://Assets/right.png" id="15_lnjbi"]
-[ext_resource type="Texture2D" uid="uid://cneq6kw2guqv5" path="res://Assets/rightpressed.png" id="16_6r21i"]
-[ext_resource type="Texture2D" uid="uid://fcapboe2lor1" path="res://Assets/d.png" id="17_1lqdn"]
-[ext_resource type="Texture2D" uid="uid://doa1jtu7hadce" path="res://Assets/dashpressed.png" id="18_y6q8c"]
-[ext_resource type="Texture2D" uid="uid://pq2hvm8vh33n" path="res://Assets/a.png" id="19_yh5pj"]
-[ext_resource type="Texture2D" uid="uid://o8ui7qq0fyar" path="res://Assets/apressed.png" id="20_ucawu"]
-[ext_resource type="Texture2D" uid="uid://crr6ondntwjyk" path="res://Assets/btest.png" id="21_prvws"]
-[ext_resource type="Texture2D" uid="uid://d1nyyhwg54ita" path="res://Assets/b_pressed.png" id="22_coo5o"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_enceq"]
-radius = 13.0
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_82bdi")
@@ -58,57 +41,6 @@ offset_bottom = 4.0
 [node name="UP" type="TouchScreenButton" parent="."]
 visible = false
 position = Vector2(33, 115)
-texture_normal = ExtResource("9_t7t8f")
-texture_pressed = ExtResource("10_eodml")
-shape = SubResource("CircleShape2D_enceq")
 action = "ui_up"
-
-[node name="DOWN" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(33, 148)
-texture_normal = ExtResource("11_flkqr")
-texture_pressed = ExtResource("12_745aj")
-shape = SubResource("CircleShape2D_enceq")
-action = "ui_down"
-
-[node name="LEFT" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(10, 131)
-texture_normal = ExtResource("13_b15rr")
-texture_pressed = ExtResource("14_4norr")
-shape = SubResource("CircleShape2D_enceq")
-action = "ui_left"
-
-[node name="RIGHT" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(56, 131)
-texture_normal = ExtResource("15_lnjbi")
-texture_pressed = ExtResource("16_6r21i")
-shape = SubResource("CircleShape2D_enceq")
-action = "ui_right"
-
-[node name="DASH" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(293, 128)
-texture_normal = ExtResource("17_1lqdn")
-texture_pressed = ExtResource("18_y6q8c")
-shape = SubResource("CircleShape2D_enceq")
-action = "dash"
-
-[node name="A" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(268, 144)
-texture_normal = ExtResource("19_yh5pj")
-texture_pressed = ExtResource("20_ucawu")
-shape = SubResource("CircleShape2D_enceq")
-action = "ui_accept"
-
-[node name="B" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(267, 112)
-texture_normal = ExtResource("21_prvws")
-texture_pressed = ExtResource("22_coo5o")
-shape = SubResource("CircleShape2D_enceq")
-action = "attack"
 
 [editable path="Inventory"]

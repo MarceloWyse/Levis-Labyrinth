@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xv88400aep5c"
-path="res://.godot/imported/ates2t.png-9ee629a36422b28ef4e4c5c188240649.ctex"
+uid="uid://d1fso1wgochap"
+path="res://.godot/imported/garbage_can.png-fe3f3290b00afb0fe90c2571e66fa47d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ates2t.png"
-dest_files=["res://.godot/imported/ates2t.png-9ee629a36422b28ef4e4c5c188240649.ctex"]
+source_file="res://Assets/garbage_can.png"
+dest_files=["res://.godot/imported/garbage_can.png-fe3f3290b00afb0fe90c2571e66fa47d.ctex"]
 
 [params]
 
