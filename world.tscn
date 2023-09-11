@@ -238,7 +238,7 @@ size = Vector2(57.4338, 91.5835)
 size = Vector2(40.0504, 97.081)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bic3t"]
-size = Vector2(37.0034, 35.9723)
+size = Vector2(75.16, 35.9723)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk587"]
 size = Vector2(24.3015, 94.1515)
@@ -1078,9 +1078,13 @@ position = Vector2(-771.434, -623.803)
 position = Vector2(0, 0.630676)
 
 [node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(-700.716, 131.958)
+position = Vector2(-708.132, -53.4485)
 collision_mask = 161
 platform_on_leave = 2
+
+[node name="AnimationTimer" type="Timer" parent="Levi"]
+wait_time = 7.0
+one_shot = true
 
 [node name="Walker2" type="Node2D" parent="."]
 position = Vector2(-932.665, -622.46)
@@ -1122,17 +1126,13 @@ position = Vector2(10.0252, -38.5405)
 shape = SubResource("RectangleShape2D_8m2im")
 
 [node name="TooFarPopUp" type="Area2D" parent="."]
-position = Vector2(-835.994, -93.8269)
+position = Vector2(-824.382, -93.8269)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TooFarPopUp"]
-position = Vector2(8.08124, -5.46347)
+position = Vector2(26.4857, -5.46347)
 shape = SubResource("RectangleShape2D_bic3t")
-
-[node name="Reenable_PopUp" type="Timer" parent="TooFarPopUp"]
-wait_time = 10.0
-one_shot = true
 
 [node name="DashCamera" type="Camera2D" parent="."]
 process_mode = 3
@@ -1552,11 +1552,12 @@ texture = ExtResource("51_3i18m")
 [connection signal="body_entered" from="ExitDoor" to="." method="_on_exit_door_body_entered"]
 [connection signal="body_entered" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_entered"]
 [connection signal="body_exited" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_exited"]
+[connection signal="timeout" from="Levi/AnimationTimer" to="Levi" method="_on_animation_timer_timeout"]
 [connection signal="body_entered" from="JumpPopUp" to="." method="_on_jump_pop_up_body_entered"]
 [connection signal="body_entered" from="FightPopUp" to="." method="_on_fight_pop_up_body_entered"]
 [connection signal="body_entered" from="BreakPopUp" to="." method="_on_break_pop_up_body_entered"]
 [connection signal="body_entered" from="TooFarPopUp" to="." method="_on_too_far_pop_up_body_entered"]
-[connection signal="timeout" from="TooFarPopUp/Reenable_PopUp" to="." method="_on_reenable_pop_up_timeout"]
+[connection signal="body_entered" from="TooFarPopUp" to="Levi" method="_on_too_far_pop_up_body_entered"]
 [connection signal="body_entered" from="LadderPopUp" to="." method="_on_ladder_pop_up_body_entered"]
 [connection signal="body_entered" from="LeverPopUp" to="." method="_on_lever_pop_up_body_entered"]
 [connection signal="body_entered" from="1stFloor/drinking_fountain/Area2D" to="1stFloor/drinking_fountain" method="_on_area_2d_body_entered"]

@@ -14,7 +14,6 @@ extends Node2D
 @onready var fight_pop_up = $FightPopUp
 @onready var break_pop_up = $BreakPopUp
 @onready var too_far_pop_up = $TooFarPopUp
-@onready var reenable_pop_up = $TooFarPopUp/Reenable_PopUp
 @onready var dash_camera = $DashCamera
 @onready var ladder_pop_up = $LadderPopUp
 @onready var lever_pop_up = $LeverPopUp
@@ -73,19 +72,21 @@ func _on_pop_up_timer_2_timeout():
 
 func _on_too_far_pop_up_body_entered(_body):
 	too_far_pop_up.set_deferred("monitoring", false)
+	await get_tree().create_timer(3).timeout
 	levi_dialogue("It seems too far away to jump...")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	pop_up_levi.visible = false
 	alfy_dialogue("Levi, perhaps you should search upstairs?")
 	levi.get_node("Camera2D").enabled = false
 	get_tree().paused = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
 	dash_camera.enabled = false
 	levi.get_node("Camera2D").enabled = true
 	dash_camera.enabled = true
 	pop_up_timer.start()
-	reenable_pop_up.start()
+#	reenable_pop_up.start()
+	too_far_pop_up.queue_free()
 
 func levi_dialogue(my_text : String):
 	pop_up_levi.visible = true
@@ -94,9 +95,6 @@ func levi_dialogue(my_text : String):
 func alfy_dialogue(my_text : String):
 	pop_up_alfy.visible = true
 	popup_alfy_label.text = "Alfy: " + my_text
-
-func _on_reenable_pop_up_timeout():
-	too_far_pop_up.set_deferred("monitoring" ,true)
 
 func _on_ladder_pop_up_body_entered(_body):
 	alfy_dialogue("Press W or the UP arrow key to climb stairs.")
@@ -120,3 +118,4 @@ func _on_exit_door_body_entered(_body):
 		await get_tree().create_timer(1.2).timeout
 		opened = true
 		get_tree().change_scene_to_file("res://level_two.tscn")
+

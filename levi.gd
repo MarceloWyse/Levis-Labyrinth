@@ -18,6 +18,7 @@ extends CharacterBody2D
 @onready var stairs_2 = $"../Stairs2"
 @onready var dash_camera = $"../DashCamera"
 @export var GHOST_SCENE : PackedScene
+@onready var animation_timer = $AnimationTimer
 
 var money : int = 0
 var gravity = 900
@@ -30,6 +31,7 @@ var dashing = false
 var knockback = false
 const SPEED = 100.0
 const JUMP_VELOCITY = -340.0
+var during_animation = false
 
 func _ready():
 	MainInstances.player = self
@@ -42,7 +44,6 @@ func _physics_process(delta):
 	money_label.text = str(money)
 	progress_bar.value = $AlfyTimer.time_left
 	var direction = Input.get_axis("ui_left", "ui_right")
-	
 	respawn()
 	apply_gravity(delta)
 	walk_and_alfys_position(direction)
@@ -54,7 +55,8 @@ func _physics_process(delta):
 	punch_attack()
 	fall_from_ledge()
 	push_objects()
-	
+	stop_at_edge_animation()
+
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -84,7 +86,7 @@ func _on_hurtbox_hurt(_hitbox, damage):
 ##	Events.screen_shake.emit(3, 0.2)
 
 func idle(direction):
-	if not direction and velocity.y == 0 and not punching and not knockback:
+	if not direction and velocity.y == 0 and not punching and not knockback and not during_animation:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
 
@@ -135,7 +137,7 @@ func alfy_attack():
 
 func walk_and_alfys_position(input):
 	var direction = input
-	if direction and not punching and not knockback:
+	if direction and not punching and not knockback and not during_animation:
 		velocity.x = direction * SPEED
 		if velocity.x > 0:
 			alfy.global_position = global_position + Vector2(-14,-28)
@@ -156,7 +158,7 @@ func push_objects():
 			c.get_collider().apply_central_impulse(-c.get_normal() * 8)	
 
 func jump():
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not knockback:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not knockback and not during_animation:
 		velocity.y = JUMP_VELOCITY
 		Sound.play(Sound.jump)
 		if velocity.y > 0:
@@ -196,7 +198,7 @@ func fall_from_ledge():
 		animated_sprite_2d.play("fall")
 
 func punch_attack():
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and not during_animation:
 		punching = true
 		if animated_sprite_2d.flip_h == false:
 			velocity.x = 0
@@ -210,3 +212,18 @@ func punch_attack():
 			animation_player.play("attack_left")
 			await animation_player.animation_finished
 			punching = false
+
+func _on_too_far_pop_up_body_entered(body):
+	during_animation = true
+	animation_timer.start()
+	velocity.x = 0
+	animated_sprite_2d.play("walk")
+	velocity.x = -35
+	
+func _on_animation_timer_timeout():
+	during_animation = false
+
+func stop_at_edge_animation():
+	if during_animation and global_position.x < -820:
+		global_position.x = -820
+		animated_sprite_2d.play("idle")
