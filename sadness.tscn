@@ -290,7 +290,7 @@ collision_mask = 8
 damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-3, 2.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_1ixtl")
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_c1fs4")]
@@ -298,7 +298,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-3, 2.5)
+position = Vector2(4, 1)
 shape = SubResource("RectangleShape2D_8hkc4")
 
 [node name="DamageTaken" parent="." instance=ExtResource("7_ralsr")]
@@ -317,7 +317,7 @@ one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 2)
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_ijdb7")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

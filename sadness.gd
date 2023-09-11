@@ -16,8 +16,8 @@ func _process(_delta):
 	
 	move_and_slide()
 	
-	var direction = global_position.direction_to(MainInstances.player.global_position)
-	print(direction)
+#	var direction = global_position.direction_to(MainInstances.player.global_position)
+	
 	
 	if idling:
 		walk_backwards = false

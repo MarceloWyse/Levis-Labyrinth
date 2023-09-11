@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://cvq63fiffrnfv"
+path="res://.godot/imported/globe_export.png-f0db455f66898cfd5c8c647149349750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/globe_export.png"
+dest_files=["res://.godot/imported/globe_export.png-f0db455f66898cfd5c8c647149349750.ctex"]
 
 [params]
 

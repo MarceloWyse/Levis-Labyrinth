@@ -68,11 +68,10 @@ func _process(_delta):
 
 func _on_stats_no_health():
 	if death : return
-	var random = randi() % 2 
+	var random = randi() % 3 
 	var money_bag = MONEY_SCENE.instantiate()
 	money_bag.global_position = global_position + Vector2(0, -15)
 	var world = get_tree().current_scene
-	print(random)
 	if random == 1:
 		world.add_child.call_deferred(money_bag)
 	hitbox.queue_free()	

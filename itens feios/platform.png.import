@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://bwyb46iu0h8fv"
+path="res://.godot/imported/platform.png-4aeedc744f003ffc1d53766df98bf8dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://itens feios/platform.png"
+dest_files=["res://.godot/imported/platform.png-4aeedc744f003ffc1d53766df98bf8dc.ctex"]
 
 [params]
 

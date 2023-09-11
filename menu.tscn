@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkxg8pwfv5h0g"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_wgsky"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npbtc"]
+bg_color = Color(0.129412, 0.176471, 0.231373, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 15
+corner_detail = 1
+shadow_size = 4
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgsky")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_npbtc")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "- Levi's Labyrinth -"
+
+[node name="StartBtn" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="LoadBtn" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="QuitBtn" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/StartBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

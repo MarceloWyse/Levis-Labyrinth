@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://dfh7ciea6jjhs"
+path="res://.godot/imported/stove.png-8f31aabc4ab7862fe3edb2d057a57539.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/stove.png"
+dest_files=["res://.godot/imported/stove.png-8f31aabc4ab7862fe3edb2d057a57539.ctex"]
 
 [params]
 

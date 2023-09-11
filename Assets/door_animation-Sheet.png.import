@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://b6ox5rb2jnhnv"
+path="res://.godot/imported/door_animation-Sheet.png-efc160bf3c7f7add55e74a0276e3c57e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/door_animation-Sheet.png"
+dest_files=["res://.godot/imported/door_animation-Sheet.png-efc160bf3c7f7add55e74a0276e3c57e.ctex"]
 
 [params]
 

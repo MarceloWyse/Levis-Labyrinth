@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://dlblmwp1wsxh3"
+path="res://.godot/imported/spikes_sheet.png-09797791c4993db1e9bc06151449c2d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/spikes_sheet.png"
+dest_files=["res://.godot/imported/spikes_sheet.png-09797791c4993db1e9bc06151449c2d4.ctex"]
 
 [params]
 

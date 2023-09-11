@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4hsj5avjv3ad"]
+[gd_scene load_steps=22 format=3 uid="uid://c4hsj5avjv3ad"]
 
 [ext_resource type="Texture2D" uid="uid://ync0j3k1n3mo" path="res://pigbank-break.png" id="1_gtcri"]
+[ext_resource type="Texture2D" uid="uid://bqhg580txxixs" path="res://Assets/pigbank_sparkles.png" id="2_m35kp"]
 [ext_resource type="Script" path="res://pigbank.gd" id="2_ok50e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y2q6q"]
@@ -18,6 +19,54 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7iwa"]
 atlas = ExtResource("1_gtcri")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17uxs"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_febpl"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daedy"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tffv"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bgns"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el2pl"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2b4k"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvxxe"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xptyd"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1xko"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0gyu"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(480, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1eos"]
+atlas = ExtResource("2_m35kp")
+region = Rect2(528, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvdml"]
 animations = [{
@@ -37,14 +86,57 @@ animations = [{
 "loop": false,
 "name": &"pig_break",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17uxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_febpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daedy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tffv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bgns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el2pl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2b4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvxxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xptyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1xko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0gyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1eos")
+}],
+"loop": true,
+"name": &"pig_shine",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muole"]
-size = Vector2(16, 15)
+size = Vector2(27, 22)
 
 [node name="Pigbank" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_fvdml")
-animation = &"pig_break"
+animation = &"pig_shine"
+autoplay = "pig_shine"
+frame_progress = 0.673476
 script = ExtResource("2_ok50e")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -52,5 +144,5 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -1.5)
+position = Vector2(0.5, -5)
 shape = SubResource("RectangleShape2D_muole")

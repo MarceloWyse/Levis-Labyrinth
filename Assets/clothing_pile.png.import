@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://cmy3o161bpsfl"
+path="res://.godot/imported/clothing_pile.png-9733b9d4019b26b9d28ed48849ee7df9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/clothing_pile.png"
+dest_files=["res://.godot/imported/clothing_pile.png-9733b9d4019b26b9d28ed48849ee7df9.ctex"]
 
 [params]
 

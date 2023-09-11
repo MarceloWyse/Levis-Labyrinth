@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cscgxdari8ix"
-path="res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"
+uid="uid://b3krmdp3aoygm"
+path="res://.godot/imported/shelf.png-dc37920bde23f37ec40747dbe4fcb105.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/shower_sheet.png"
-dest_files=["res://.godot/imported/shower_sheet.png-4acbf0c0d6e46891c8e97ba92ab4ac12.ctex"]
+source_file="res://Assets/shelf.png"
+dest_files=["res://.godot/imported/shelf.png-dc37920bde23f37ec40747dbe4fcb105.ctex"]
 
 [params]
 

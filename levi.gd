@@ -16,7 +16,7 @@ extends CharacterBody2D
 @onready var hitbox = $Alfy/Hitbox
 @onready var stairs = $"../Stairs"
 @onready var stairs_2 = $"../Stairs2"
-
+@onready var dash_camera = $"../DashCamera"
 @export var GHOST_SCENE : PackedScene
 
 var money : int = 0
@@ -89,6 +89,7 @@ func idle(direction):
 		animated_sprite_2d.play("idle")
 
 func reparent_camera():
+	dash_camera.enabled = false
 	camera_2d.reparent(get_tree().current_scene)
 	queue_free()
 
