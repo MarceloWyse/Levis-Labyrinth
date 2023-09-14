@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cv2f0jq1yumkb"]
 
-[ext_resource type="Texture2D" uid="uid://ck2ijxkiqp6q1" path="res://platform.png" id="1_rxof3"]
+[ext_resource type="Texture2D" uid="uid://7nst2if4u5to" path="res://Assets/wooden_platform.png" id="1_d3n1b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mw08"]
 radius = 5.00219
-height = 58.554
+height = 63.8731
 
 [sub_resource type="Curve2D" id="Curve2D_cl60w"]
 _data = {
@@ -58,10 +58,10 @@ position = Vector2(-0.0916697, 21.8983)
 scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
-texture = ExtResource("1_rxof3")
+texture = ExtResource("1_d3n1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-position = Vector2(-0.111359, -2.33861)
+position = Vector2(0.449871, -2.33861)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4mw08")
 
@@ -69,9 +69,8 @@ shape = SubResource("CapsuleShape2D_4mw08")
 curve = SubResource("Curve2D_cl60w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-0.350607, 21.1514)
-rotation = 1.56891
-progress = 221.161
+position = Vector2(-0.75, 49)
+rotation = -1.56905
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
 position = Vector2(0.74745, -0.257525)

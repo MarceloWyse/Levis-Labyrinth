@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ud0ifnqrcla"]
+
+[ext_resource type="Script" path="res://Finite_Machine/finite_state_machine.gd" id="1_w20fy"]
+[ext_resource type="Script" path="res://idle_state.gd" id="2_5lt0c"]
+
+[node name="FiniteStateMachine" type="Node" node_paths=PackedStringArray("state")]
+script = ExtResource("1_w20fy")
+state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("2_5lt0c")

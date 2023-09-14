@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://2xpl2n3dfaxd"]
+
+[ext_resource type="Script" path="res://test.gd" id="1_tkbsp"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkbsp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 67.0615
+offset_top = 35.1074
+offset_right = 107.061
+offset_bottom = 61.1074
+text = "klkl"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 116.254
+offset_top = 31.9541
+offset_right = 156.254
+offset_bottom = 57.9541
+text = "nah"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "jklkl"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Label" to="." method="_on_label_mouse_entered"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

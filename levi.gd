@@ -19,12 +19,13 @@ extends CharacterBody2D
 @onready var dash_camera = $"../DashCamera"
 @export var GHOST_SCENE : PackedScene
 @onready var animation_timer = $AnimationTimer
+@onready var dash_skill = $"../Dash_skill"
 
 var money : int = 0
 var gravity = 900
-var blue_key = false
-var medal = false
-var trophy = false
+var dstation = false
+var dcontroller = false
+var cd = false
 var initial_position
 var punching = false
 var dashing = false
@@ -32,6 +33,9 @@ var knockback = false
 const SPEED = 100.0
 const JUMP_VELOCITY = -340.0
 var during_animation = false
+var dash_available = false
+var dashing_left = false
+var dashing_right = false
 
 func _ready():
 	MainInstances.player = self
@@ -44,15 +48,22 @@ func _physics_process(delta):
 	money_label.text = str(money)
 	progress_bar.value = $AlfyTimer.time_left
 	var direction = Input.get_axis("ui_left", "ui_right")
+	if not dashing:
+		apply_gravity(delta)
+	else:
+		velocity.y = 700 * delta
+#	if dashing_left or dashing_right or dashing:
+##		if not is_on_floor():
+#		velocity.y = 700 * delta
+		
 	respawn()
-	apply_gravity(delta)
 	walk_and_alfys_position(direction)
 	alfy_attack()
 	jump()
 	fall()
 	dash()
 	idle(direction)
-	punch_attack()
+	punch_attack(delta)
 	fall_from_ledge()
 	push_objects()
 	stop_at_edge_animation()
@@ -86,7 +97,7 @@ func _on_hurtbox_hurt(_hitbox, damage):
 ##	Events.screen_shake.emit(3, 0.2)
 
 func idle(direction):
-	if not direction and velocity.y == 0 and not punching and not knockback and not during_animation:
+	if not direction and velocity.y == 0 and not punching and not knockback and not during_animation and not dashing_left and not dashing:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		animated_sprite_2d.play("idle")
 
@@ -95,6 +106,7 @@ func reparent_camera():
 	camera_2d.reparent(get_tree().current_scene)
 	queue_free()
 
+	
 func ghost_spawn():
 	var world = get_tree().current_scene
 	var ghost = GHOST_SCENE.instantiate()
@@ -137,7 +149,7 @@ func alfy_attack():
 
 func walk_and_alfys_position(input):
 	var direction = input
-	if direction and not punching and not knockback and not during_animation:
+	if direction and not punching and not knockback and not during_animation and not dashing_left and not dashing_right and not dashing:
 		velocity.x = direction * SPEED
 		if velocity.x > 0:
 			alfy.global_position = global_position + Vector2(-14,-28)
@@ -158,35 +170,77 @@ func push_objects():
 			c.get_collider().apply_central_impulse(-c.get_normal() * 8)	
 
 func jump():
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not knockback and not during_animation:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not knockback and not during_animation and not dashing_left and not dashing_right and not dashing:
 		velocity.y = JUMP_VELOCITY
 		Sound.play(Sound.jump)
 		if velocity.y > 0:
 			animated_sprite_2d.play("jump")
 
 func fall():
-	if velocity.y < 0 and not dashing and not knockback and not punching:
+	if velocity.y < 0 and not dashing and not knockback and not punching and not dashing_left and not dashing_right:
 		animated_sprite_2d.play("fall")
 
+#func dash(): #dash debugging...
+#	if not is_on_floor() and dash_available:
+#		if Input.is_action_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing and Input.is_action_pressed("ui_left"):
+#			dashing_left = true
+#			animated_sprite_2d.play("dash")
+#			$GhostTimer.start()
+#			var my_tween = get_tree().create_tween()
+#			my_tween.tween_property(self, "velocity:x", -200, 0.2)
+#			dash_timer.start()
+#			await get_tree().create_timer(0.7).timeout
+#			$GhostTimer.stop() 
+#			dashing_left = false
+#
+#	if not is_on_floor() and dash_available:
+#		if Input.is_action_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing and Input.is_action_pressed("ui_right"):
+#			dashing_right = true
+#			animated_sprite_2d.play("dash")
+#			$GhostTimer.start()
+#			var my_tween = get_tree().create_tween()
+#			my_tween.tween_property(self, "velocity:x", 200, 0.2)
+#			dash_timer.start()
+#			await get_tree().create_timer(0.7).timeout
+#			$GhostTimer.stop() 
+#			dashing_right = false
+#
+#	if not is_on_floor() and dash_available and not dashing_left and not dashing_right:
+#		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
+#			dashing = true
+#			animated_sprite_2d.play("dash")
+#			$GhostTimer.start()
+#			if animated_sprite_2d.flip_h == false:
+#				var my_tween = get_tree().create_tween()
+#				my_tween.tween_property(self, "velocity:x", 200, 0.2)
+##			
+#			else:
+#				var my_tween = get_tree().create_tween()
+#				my_tween.tween_property(self, "velocity:x", -200, 0.2)
+#				print(velocity.x)
+#			dash_timer.start()
+#			await get_tree().create_timer(0.7).timeout
+#			$GhostTimer.stop() 
+#			dashing = false
+
 func dash():
-	if not is_on_floor():
-		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing and not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right") :
+	if not is_on_floor() and dash_available:
+		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing:
 			dashing = true
-			gravity = 0
 			animated_sprite_2d.play("dash")
 			$GhostTimer.start()
 			if animated_sprite_2d.flip_h == false:
 				var my_tween = get_tree().create_tween()
-				my_tween.tween_property(self, "velocity:x", 250, 0.2)
-	#				
+#				my_tween.tween_property(self, "velocity:x", 150, 0.1)
+				my_tween.tween_property(self, "velocity:x", 0, 0.1) \
+				.as_relative().from(180)
 			else:
 				var my_tween = get_tree().create_tween()
-				my_tween.tween_property(self, "velocity:x", velocity.x - 250, 0.2)
-	#				
+				my_tween.tween_property(self, "velocity:x", 0, 0.1) \
+				.as_relative().from(-180)
 			dash_timer.start()
 			await get_tree().create_timer(0.7).timeout
 			$GhostTimer.stop()
-			gravity = 900 
 			dashing = false
 
 func fall_from_ledge():
@@ -194,31 +248,39 @@ func fall_from_ledge():
 	
 	move_and_slide()
 
-	if was_on_floor and not is_on_floor() and not knockback and not dashing:
+	if was_on_floor and not is_on_floor() and not knockback and not dashing and not dashing_left and not dashing_right:
 		animated_sprite_2d.play("fall")
 
-func punch_attack():
+func punch_attack(_delta):
 	if Input.is_action_just_pressed("attack") and not during_animation:
 		punching = true
 		if animated_sprite_2d.flip_h == false:
-			velocity.x = 0
+			if is_on_floor():
+				velocity = velocity.move_toward(Vector2(10,velocity.y), 100)
+			else:
+				await get_tree().create_timer(0.1).timeout
+				velocity = velocity.move_toward(Vector2(15, velocity.y), 80)
 			animated_sprite_2d.play("punch")
 			animation_player.play("attack_right")
 			await animated_sprite_2d.animation_finished
 			punching = false
 		else:
-			velocity.x = 0
+			if is_on_floor():
+				velocity = velocity.move_toward(Vector2(-10,velocity.y), 100)
+			else:
+				await get_tree().create_timer(0.1).timeout
+				velocity = velocity.move_toward(Vector2(-15, velocity.y), 80)
 			animated_sprite_2d.play("punch")
 			animation_player.play("attack_left")
 			await animation_player.animation_finished
 			punching = false
 
-func _on_too_far_pop_up_body_entered(body):
+func _on_too_far_pop_up_body_entered(_body):
 	during_animation = true
 	animation_timer.start()
 	velocity.x = 0
 	animated_sprite_2d.play("walk")
-	velocity.x = -35
+	velocity.x = -50
 	
 func _on_animation_timer_timeout():
 	during_animation = false
@@ -227,3 +289,4 @@ func stop_at_edge_animation():
 	if during_animation and global_position.x < -820:
 		global_position.x = -820
 		animated_sprite_2d.play("idle")
+

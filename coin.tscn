@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ddh5mb1y8vwcb"]
 
 [ext_resource type="Texture2D" uid="uid://drhqk3afughf7" path="res://Assets/coin_turning_animation.png" id="1_wybt7"]
-[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="2_rf6o6"]
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="2_ot41x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyswd"]
 atlas = ExtResource("1_wybt7")
@@ -33,11 +33,11 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dyjjf"]
-font = ExtResource("2_rf6o6")
-font_size = 10
+font = ExtResource("2_ot41x")
+font_size = 5
 
 [node name="Coin" type="AnimatedSprite2D"]
-position = Vector2(240.786, 11.828)
+position = Vector2(240, 13)
 sprite_frames = SubResource("SpriteFrames_kvccl")
 animation = &"turning"
 autoplay = "turning"

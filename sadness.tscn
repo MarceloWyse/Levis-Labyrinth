@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d0kuhrlrlq665"]
+[gd_scene load_steps=54 format=3 uid="uid://d0kuhrlrlq665"]
 
 [ext_resource type="Script" path="res://sadness.gd" id="1_ds43c"]
 [ext_resource type="Texture2D" uid="uid://d3r63hopulkps" path="res://Sadness_sprites/sadness_hit_sheet.png" id="2_4pxl6"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://74g62hupy2x0" path="res://hurtbox.tscn" id="5_c1fs4"]
 [ext_resource type="Texture2D" uid="uid://c555v4b38cmwr" path="res://Sadness_sprites/sadness_walk_sheet.png" id="6_mniyj"]
 [ext_resource type="PackedScene" uid="uid://b6j016gflf0kf" path="res://damage_taken.tscn" id="7_ralsr"]
+[ext_resource type="Script" path="res://Finite_Machine/finite_state_machine.gd" id="11_oa0ke"]
+[ext_resource type="Script" path="res://plant_idle_state.gd" id="12_wpd4y"]
+[ext_resource type="Script" path="res://plant_walk_state.gd" id="13_8iml3"]
+[ext_resource type="Script" path="res://plant_attack_state.gd" id="14_hrxjt"]
+[ext_resource type="Script" path="res://State_debugger.gd" id="15_obarq"]
+[ext_resource type="Script" path="res://HideState.gd" id="15_riysw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_terv6"]
 atlas = ExtResource("2_4pxl6")
@@ -174,7 +180,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,7 +206,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rlbfn")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -258,13 +264,16 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7sgnd")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ixtl"]
 size = Vector2(28, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr4hp"]
+radius = 24.0208
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hkc4"]
 size = Vector2(26, 25)
@@ -273,12 +282,15 @@ size = Vector2(26, 25)
 size = Vector2(28, 28)
 
 [node name="Sadness" type="CharacterBody2D"]
+position = Vector2(129, 74)
 collision_layer = 4
 script = ExtResource("1_ds43c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2gbxg")
-animation = &"idle"
+animation = &"attack"
+frame = 9
+frame_progress = 1.0
 flip_h = true
 
 [node name="Stats" parent="." instance=ExtResource("3_ers66")]
@@ -287,11 +299,21 @@ max_health = 5
 [node name="Hitbox" parent="." instance=ExtResource("4_5xjmi")]
 collision_layer = 0
 collision_mask = 8
-damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_1ixtl")
+
+[node name="AttackHitbox" parent="." instance=ExtResource("4_5xjmi")]
+position = Vector2(15, 0)
+collision_layer = 0
+collision_mask = 8
+damage = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(-11, -3)
+shape = SubResource("CircleShape2D_pr4hp")
+debug_color = Color(0.423529, 0.00392157, 0.305882, 0.419608)
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_c1fs4")]
 collision_layer = 16
@@ -308,21 +330,58 @@ offset_top = -24.0
 offset_right = -3.0
 offset_bottom = -24.0
 
-[node name="WalkTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="IdleTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_ijdb7")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("11_oa0ke")
+state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "vision_cast")]
+script = ExtResource("12_wpd4y")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+vision_cast = NodePath("../../RayCast2D")
+
+[node name="IdleTimer" type="Timer" parent="FiniteStateMachine/IdleState"]
+one_shot = true
+
+[node name="WalkState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("13_8iml3")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="WalkTimer" type="Timer" parent="FiniteStateMachine/WalkState"]
+wait_time = 2.0
+one_shot = true
+
+[node name="AttackState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator")]
+script = ExtResource("14_hrxjt")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+
+[node name="HideState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animator", "vision_cast")]
+script = ExtResource("15_riysw")
+animator = NodePath("../../AnimatedSprite2D")
+vision_cast = NodePath("../../RayCast2D")
+
+[node name="State_debugger" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -40.0
+offset_right = 22.0
+offset_bottom = -17.0
+text = "sasa"
+script = ExtResource("15_obarq")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(128, 1)
+collision_mask = 2
+
+[node name="LostSightTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
-[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

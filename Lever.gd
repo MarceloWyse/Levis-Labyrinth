@@ -5,6 +5,7 @@ extends Area2D
 @onready var lever_collision = $lever_collision
 @onready var doorup_collision = $"../DoorUp/doorup_collision"
 @onready var levi = $"../Levi"
+@onready var x_button = $X_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,3 +20,9 @@ func _physics_process(_delta):
 			lever_collision.queue_free()
 			door_up.get_node("slider_door_up").play("move_door")
 			doorup_collision.queue_free()
+
+func _on_body_entered(_body):
+	x_button.visible = true
+
+func _on_body_exited(_body):
+	x_button.visible = false

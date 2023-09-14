@@ -1,7 +1,7 @@
 extends Node
 
 @export var main_theme : AudioStream
-#@export var another_theme : AudioStream
+@export var menu_theme : AudioStream
 @onready var audio_stream_player = $AudioStreamPlayer
 
 func play(song, from_position):

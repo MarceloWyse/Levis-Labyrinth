@@ -10,17 +10,20 @@ extends Node2D
 @onready var pop_up_levi = $PopUpLevi
 @onready var popup_levi_label = $PopUpLevi/ColorRect/Label
 @onready var pop_up_timer_2 = $PopUpLevi/PopUpTimer2
-@onready var jump_pop_up = $JumpPopUp
-@onready var fight_pop_up = $FightPopUp
-@onready var break_pop_up = $BreakPopUp
-@onready var too_far_pop_up = $TooFarPopUp
+@onready var jump_pop_up = $Dialogues/JumpPopUp
+@onready var fight_pop_up = $Dialogues/FightPopUp
+@onready var break_pop_up = $Dialogues/BreakPopUp
+@onready var too_far_pop_up = $Dialogues/TooFarPopUp
 @onready var dash_camera = $DashCamera
-@onready var ladder_pop_up = $LadderPopUp
-@onready var lever_pop_up = $LeverPopUp
+@onready var ladder_pop_up = $Dialogues/LadderPopUp
+@onready var lever_pop_up = $Dialogues/LeverPopUp
 @onready var animated_sprite_2d = $ExitDoor/AnimatedSprite2D
+@onready var look_for_the_exit = $Dialogues/LookForTheExit
+@onready var how_to_dash = $Dialogues/HowToDash
 
 var opened = false
 var lever_dialogue_counter = 0
+var reset_health = PlayerStats.max_health
 
 func _ready():
 	$FadeOut.visible = true
@@ -33,18 +36,21 @@ func _ready():
 	Music.play(Music.main_theme, 0)
 	await get_tree().create_timer(0.5).timeout
 	pop_up_alfy.visible = true
-	popup_alfy_label.text = "Alfy: Use WASD or the arrow keys to move."
+#	var bold = popup_alfy_label.label_settings.font_color
+	popup_alfy_label.text = "Alfy: use WASD or the arrow keys to move."
 	pop_up_timer.start()
-	
-func _on_key_body_entered(_body):
-	levi.blue_key = true
-#	key.queue_free()
+	PlayerStats.connect("no_health", restart_scene)
+	#$YourLabel.set("theme_override_colors/font_color", Color(1, 0, 0))
 
-func _on_medal_body_entered(_body):
-	levi.medal = true
 
-func _on_trophy_body_entered(_body):
-	levi.trophy = true
+func _on_cd_body_entered(_body):
+	levi.cd = true
+
+func _on_dstation_body_entered(_body):
+	levi.dstation = true
+
+func _on_d_controller_body_entered(_body):
+	levi.dcontroller = true
 
 func _on_pop_up_timer_timeout():
 	pop_up_alfy.visible = false
@@ -72,20 +78,19 @@ func _on_pop_up_timer_2_timeout():
 
 func _on_too_far_pop_up_body_entered(_body):
 	too_far_pop_up.set_deferred("monitoring", false)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	levi_dialogue("It seems too far away to jump...")
 	await get_tree().create_timer(3).timeout
 	pop_up_levi.visible = false
 	alfy_dialogue("Levi, perhaps you should search upstairs?")
 	levi.get_node("Camera2D").enabled = false
 	get_tree().paused = true
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.5).timeout
 	get_tree().paused = false
 	dash_camera.enabled = false
 	levi.get_node("Camera2D").enabled = true
 	dash_camera.enabled = true
 	pop_up_timer.start()
-#	reenable_pop_up.start()
 	too_far_pop_up.queue_free()
 
 func levi_dialogue(my_text : String):
@@ -103,7 +108,7 @@ func _on_ladder_pop_up_body_entered(_body):
 
 func _on_lever_pop_up_body_entered(_body):
 	lever_pop_up.set_deferred("monitoring", false)
-	alfy_dialogue("Press X to interact with objects, like this lever here.")
+	alfy_dialogue("Press X to interact with objects.")
 	await get_tree().create_timer(3.0).timeout
 	pop_up_alfy.visible = false
 	levi_dialogue("Ok, thanks")
@@ -112,10 +117,45 @@ func _on_lever_pop_up_body_entered(_body):
 	lever_dialogue_counter += 1
 	lever_pop_up.queue_free()
 
-func _on_exit_door_body_entered(_body):
-	if levi.blue_key and levi.medal and levi.trophy and not(opened):
+func _on_exit_door_body_entered(body):
+	if levi.dstation and levi.dcontroller and levi.cd and not(opened):
+		body.velocity.x = 0
+		body.animated_sprite_2d.play("idle")
+		body.during_animation = true
 		animated_sprite_2d.play("exit_door_open") 
 		await get_tree().create_timer(1.2).timeout
 		opened = true
 		get_tree().change_scene_to_file("res://level_two.tscn")
 
+func restart_scene():
+	await get_tree().create_timer(2).timeout
+#	Music.fade_music(0.2)
+	PlayerStats.max_health = reset_health
+	PlayerStats.set_health(reset_health)
+	get_tree().change_scene_to_file("res://menu.tscn")
+	
+func _on_look_for_the_exit_body_entered(body):
+	if body.dcontroller and body.cd:
+		look_for_the_exit.set_deferred("monitoring", false)
+		await get_tree().create_timer(0.5).timeout
+		alfy_dialogue("We should look for the EXIT now.")
+		pop_up_timer.start()
+		look_for_the_exit.queue_free()
+	else:
+		look_for_the_exit.set_deferred("monitoring", false)
+		await get_tree().create_timer(0.5).timeout
+		alfy_dialogue("We don't have all the items we need yet")
+		await get_tree().create_timer(4).timeout
+		pop_up_timer.start()
+		look_for_the_exit.queue_free()
+	
+func _on_how_to_dash_body_entered(body):
+	if body.dash_available:
+		how_to_dash.set_deferred("monitoring", false)
+		alfy_dialogue("Levi! Try out your AIR DASH")
+		await get_tree().create_timer(2).timeout
+		alfy_dialogue("Air Dash = JUMP + SHIFT")
+		await get_tree().create_timer(2).timeout
+		pop_up_timer.start()
+		how_to_dash.queue_free()
+	

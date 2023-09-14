@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://coajboffwnhhm"]
+[gd_scene load_steps=5 format=3 uid="uid://coajboffwnhhm"]
+
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="1_fej46"]
 
 [sub_resource type="Gradient" id="Gradient_rsojd"]
 offsets = PackedFloat32Array(0.115016, 0.808307)
@@ -10,7 +12,8 @@ fill_from = Vector2(0.952991, 0.893162)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_e6p1f"]
-font_size = 7
+font = ExtResource("1_fej46")
+font_size = 4
 font_color = Color(0.411765, 0.819608, 0.635294, 1)
 
 [node name="EnemyName" type="Control"]
@@ -32,10 +35,10 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 0
-offset_left = 7.65378
-offset_top = 2.00882
-offset_right = 45.6538
-offset_bottom = 16.0088
+offset_left = 3.00782
+offset_top = 3.8987
+offset_right = 51.0078
+offset_bottom = 17.8987
 text = "Agorafobia"
 label_settings = SubResource("LabelSettings_e6p1f")
 horizontal_alignment = 1

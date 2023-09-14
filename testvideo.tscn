@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://hc1kma48w1i1"]
+
+[ext_resource type="Script" path="res://testvideo.gd" id="1_m3v5p"]
+[ext_resource type="Texture2D" uid="uid://b6ox5rb2jnhnv" path="res://Assets/door_animation-Sheet.png" id="2_6ufmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltaav"]
+atlas = ExtResource("2_6ufmt")
+region = Rect2(0, 0, 54, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tleei"]
+atlas = ExtResource("2_6ufmt")
+region = Rect2(216, 0, 54, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4s15"]
+atlas = ExtResource("2_6ufmt")
+region = Rect2(162, 0, 54, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji2u3"]
+atlas = ExtResource("2_6ufmt")
+region = Rect2(108, 0, 54, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcphf"]
+atlas = ExtResource("2_6ufmt")
+region = Rect2(54, 0, 54, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sx8hj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltaav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tleei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4s15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji2u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcphf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3v5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(177.415, 62.3186)
+scale = Vector2(4.43216, 4.43216)
+sprite_frames = SubResource("SpriteFrames_sx8hj")
+autoplay = "default"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 127.984
+offset_top = 103.037
+offset_right = 200.984
+offset_bottom = 134.037
+text = "Start"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 126.65
+offset_top = 138.41
+offset_right = 199.65
+offset_bottom = 169.41
+text = "Load"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

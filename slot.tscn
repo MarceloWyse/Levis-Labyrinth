@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://be1vo647rn2rq"]
 
-[ext_resource type="Texture2D" uid="uid://dgigxrfbivjc1" path="res://time_bg.jpg" id="1_vw12c"]
+[ext_resource type="Texture2D" uid="uid://deol4spmotiy7" path="res://Assets/alternative_slot-v2.png" id="1_clpt8"]
 
 [node name="slot" type="Control"]
 custom_minimum_size = Vector2(16, 16)
@@ -18,7 +18,7 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_right = 15.0
 offset_bottom = 15.0
-texture = ExtResource("1_vw12c")
+texture = ExtResource("1_clpt8")
 expand_mode = 1
 stretch_mode = 4
 

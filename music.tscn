@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdhwd5p50pxun"]
+[gd_scene load_steps=4 format=3 uid="uid://cdhwd5p50pxun"]
 
 [ext_resource type="Script" path="res://Music.gd" id="1_02b4i"]
 [ext_resource type="AudioStream" uid="uid://bj2ck4v5hdbou" path="res://sanctuary.wav" id="2_v17rb"]
+[ext_resource type="AudioStream" uid="uid://bbmku2mga30so" path="res://intro.wav" id="3_7255b"]
 
 [node name="Music" type="Node"]
 process_mode = 3
 script = ExtResource("1_02b4i")
 main_theme = ExtResource("2_v17rb")
+menu_theme = ExtResource("3_7255b")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"

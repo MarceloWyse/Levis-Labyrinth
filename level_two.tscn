@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://let4mvfbhd1s"]
 
 [ext_resource type="Script" path="res://level_two.gd" id="1_bvkbh"]
-[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="2_v625g"]
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="2_gk558"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fqk3x"]
-font = ExtResource("2_v625g")
-font_size = 19
+font = ExtResource("2_gk558")
+font_size = 7
 
 [node name="LevelTwo" type="Control"]
 layout_mode = 3
@@ -33,13 +33,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -9.0
-offset_right = 95.0
-offset_bottom = 7.0
+offset_left = -106.0
+offset_top = -78.0
+offset_right = 112.0
+offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Levi's story will continue soon..."
+label_settings = SubResource("LabelSettings_fqk3x")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0.156863, 0.733333, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -56.0
+offset_right = 113.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits:
+Ana Clara Cataud
+Juliana Acunha
+Lavinia de Avila
+Marcelo Wyse
+Ursula Marques
+Vitoria Pereira"
 label_settings = SubResource("LabelSettings_fqk3x")
 horizontal_alignment = 1
 
@@ -52,9 +76,9 @@ modulate = Color(0.878431, 0.878431, 0.878431, 1)
 self_modulate = Color(0.776471, 0.776471, 0.776471, 1)
 layout_mode = 0
 offset_left = 140.0
-offset_top = 125.0
+offset_top = 143.0
 offset_right = 182.0
-offset_bottom = 156.0
+offset_bottom = 174.0
 theme_override_colors/font_color = Color(0.156863, 0.733333, 0.929412, 1)
 theme_override_colors/font_pressed_color = Color(0.14902, 0.439216, 0.556863, 1)
 theme_override_colors/font_hover_color = Color(0.156863, 0.733333, 0.929412, 1)

@@ -1,13 +1,100 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8tyfd4ca44i5"]
+[gd_scene load_steps=18 format=3 uid="uid://c8tyfd4ca44i5"]
 
 [ext_resource type="Script" path="res://HPNumber.gd" id="1_heq7i"]
+[ext_resource type="Texture2D" uid="uid://c5gycwyt8pfoy" path="res://Assets/heart_ui_sheet.png" id="2_gd34o"]
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="2_yfcm8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70m4m"]
 font_size = 8
 font_color = Color(0.913725, 0.709804, 0.776471, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3e80"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(0, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfx62"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(24, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5w6k"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(48, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpsxn"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(72, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx2m1"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(96, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouunk"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(120, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai0e1"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(144, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10poc"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(168, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_env0w"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(192, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p117a"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(216, 0, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qos2v"]
+atlas = ExtResource("2_gd34o")
+region = Rect2(240, 0, 24, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v464g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3e80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfx62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5w6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpsxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx2m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouunk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai0e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10poc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_env0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p117a")
+}, {
+"duration": 25.0,
+"texture": SubResource("AtlasTexture_qos2v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_qkjy5"]
-font_size = 10
+font_size = 4
 font_color = Color(0.85098, 0.756863, 0.92549, 1)
 
 [node name="HPLabel" type="Label"]
@@ -15,15 +102,24 @@ z_index = 1
 offset_left = 7.42462
 offset_right = 47.4246
 offset_bottom = 26.0
-text = "HP"
+theme_override_fonts/font = ExtResource("2_yfcm8")
+theme_override_font_sizes/font_size = 1
 label_settings = SubResource("LabelSettings_70m4m")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.57538, 13)
+sprite_frames = SubResource("SpriteFrames_v464g")
+autoplay = "default"
+frame_progress = 0.0990606
 
 [node name="HPNumber" type="Label" parent="."]
 layout_mode = 0
-offset_left = -8.83498
-offset_top = 9.97739
-offset_right = 20.165
-offset_bottom = 35.9774
+offset_left = -7.42462
+offset_top = 9.0
+offset_right = 21.5754
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("2_yfcm8")
+theme_override_font_sizes/font_size = 30
 text = "2"
 label_settings = SubResource("LabelSettings_qkjy5")
 horizontal_alignment = 1

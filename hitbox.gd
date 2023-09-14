@@ -1,7 +1,7 @@
 class_name Hitbox
 extends Area2D
 
-@export var damage = 1
+@export var damage = 2
 
 func _on_area_entered(hurtbox: Hurtbox):
 	if not hurtbox is Hurtbox : return

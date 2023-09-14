@@ -22,8 +22,13 @@ offset_bottom = 21.0
 visible = false
 
 [node name="Coin" parent="." instance=ExtResource("4_855on")]
+position = Vector2(231, 13)
 
 [node name="ProgressBarLabel" parent="." instance=ExtResource("5_f0i4w")]
+offset_left = 31.0
+offset_top = 10.0
+offset_right = 87.0
+offset_bottom = 21.0
 
 [node name="Dialogue" parent="." instance=ExtResource("6_pfj55")]
 process_mode = 3
@@ -37,6 +42,10 @@ offset_right = -3.0
 offset_bottom = 4.0
 
 [node name="HPLabel" parent="." instance=ExtResource("8_jv4lt")]
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 48.0
+offset_bottom = 27.0
 
 [node name="UP" type="TouchScreenButton" parent="."]
 visible = false

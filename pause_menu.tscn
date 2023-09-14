@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://n8qxxgs1va51"]
+[gd_scene load_steps=3 format=3 uid="uid://n8qxxgs1va51"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_0pjna"]
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="2_bmxhd"]
 
 [node name="PauseMenu" type="ColorRect"]
 process_mode = 3
@@ -25,6 +26,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bmxhd")
+theme_override_font_sizes/font_size = 10
 text = "- Paused - 
 
 Press ESC to unpause"
