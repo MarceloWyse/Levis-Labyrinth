@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkxg8pwfv5h0g"]
+[gd_scene load_steps=10 format=3 uid="uid://dkxg8pwfv5h0g"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_wgsky"]
 [ext_resource type="Texture2D" uid="uid://eg2kk8xjtndu" path="res://Assets/menu_cover.png" id="2_ka1sy"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://du3p4deij0yy0" path="res://Assets/load_pressed2.png" id="4_1048q"]
 [ext_resource type="Texture2D" uid="uid://dftku7af1c542" path="res://Assets/quit_pressed1.png" id="7_8wr0n"]
 [ext_resource type="Texture2D" uid="uid://bo1imo12lliep" path="res://Assets/quit_pressed2.png" id="8_hulws"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kt3bv"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -53,6 +55,16 @@ offset_right = 187.0
 offset_bottom = 176.0
 texture_normal = ExtResource("7_8wr0n")
 texture_pressed = ExtResource("8_hulws")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_kt3bv")
 
 [connection signal="pressed" from="TextureRect/StartBtn" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect/QuitBtn" to="." method="_on_quit_btn_pressed"]

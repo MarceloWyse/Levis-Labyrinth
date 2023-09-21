@@ -1,6 +1,10 @@
 extends Control
+@onready var texture_rect_2 = $TextureRect2
 
 func _ready():
+	var my_tween = create_tween()
+	my_tween.tween_property(texture_rect_2, "modulate", Color(1, 1, 1, 0), 1.5)
+	await my_tween.finished
 	Music.play(Music.menu_theme, 0)
 
 func _on_button_pressed():

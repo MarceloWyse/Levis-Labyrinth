@@ -1397,7 +1397,7 @@ position = Vector2(-771.434, -623.803)
 position = Vector2(0, 0.630676)
 
 [node name="Levi" parent="." groups=["Levi"] instance=ExtResource("1_w5emb")]
-position = Vector2(-485.695, -46.108)
+position = Vector2(-696.504, 131.695)
 collision_mask = 161
 platform_on_leave = 2
 
