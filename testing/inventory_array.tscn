@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4v5rp0w5w47c"]
-
-[ext_resource type="Script" path="res://testing/inventory_array.gd" id="1_euqor"]
-
-[node name="InventoryArrayTest" type="Node2D" groups=["inventory"]]
-script = ExtResource("1_euqor")

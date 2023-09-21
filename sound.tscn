@@ -1,13 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ujuhm6dywxq"]
+[gd_scene load_steps=17 format=3 uid="uid://b7ujuhm6dywxq"]
 
 [ext_resource type="Script" path="res://sound.gd" id="1_vb4e5"]
-[ext_resource type="AudioStream" uid="uid://bbx3s03d0r8tn" path="res://hurt.wav" id="2_t7604"]
-[ext_resource type="AudioStream" uid="uid://y4dp40an6se6" path="res://jump.wav" id="3_vetl4"]
+[ext_resource type="AudioStream" uid="uid://bbx3s03d0r8tn" path="res://Sounds/hurt.wav" id="2_8lvcp"]
+[ext_resource type="AudioStream" uid="uid://y4dp40an6se6" path="res://Sounds/jump.wav" id="3_ym1jn"]
+[ext_resource type="AudioStream" uid="uid://cbjsyf6ijme3j" path="res://Sounds/water_botlle.wav" id="4_qivv0"]
+[ext_resource type="AudioStream" uid="uid://d28skcwpdl4v" path="res://Sounds/airdash.wav" id="5_2meru"]
+[ext_resource type="AudioStream" uid="uid://rgi7pj1xxr03" path="res://Sounds/life_max_up.wav" id="6_mmlxf"]
+[ext_resource type="AudioStream" uid="uid://drsj6lfq6os42" path="res://Sounds/plant_walking.wav" id="7_dioo0"]
+[ext_resource type="AudioStream" uid="uid://be2duhgjaq4ir" path="res://Sounds/plant_attack.wav" id="8_6kjta"]
+[ext_resource type="AudioStream" uid="uid://wbq83gsgm6rt" path="res://Sounds/alfy_attack2.mp3" id="8_s8wny"]
+[ext_resource type="AudioStream" uid="uid://dyd0q5n1gqp2j" path="res://Sounds/switch.wav" id="10_c4w46"]
+[ext_resource type="AudioStream" uid="uid://dkohbmd5n0ard" path="res://Sounds/pigbreak.wav" id="10_qelfk"]
+[ext_resource type="AudioStream" uid="uid://dhrnqs2l4m5xd" path="res://Sounds/punch.wav" id="11_xiyk5"]
+[ext_resource type="AudioStream" uid="uid://cnm8gybeo56cq" path="res://Sounds/door_opening.wav" id="13_ls261"]
+[ext_resource type="AudioStream" uid="uid://b7udkpwdmxq0o" path="res://Sounds/button_press.wav" id="14_nhn0b"]
+[ext_resource type="AudioStream" uid="uid://daqf60yrwqonn" path="res://Sounds/slide_up.wav" id="15_03rp1"]
+[ext_resource type="AudioStream" uid="uid://caayt0drrge36" path="res://Sounds/powerup.ogg" id="16_hmt8d"]
 
 [node name="Sound" type="Node"]
 script = ExtResource("1_vb4e5")
-hit = ExtResource("2_t7604")
-jump = ExtResource("3_vetl4")
+hit = ExtResource("2_8lvcp")
+jump = ExtResource("3_ym1jn")
+water_bottle = ExtResource("4_qivv0")
+airdash = ExtResource("5_2meru")
+lifemax = ExtResource("6_mmlxf")
+plant_walking = ExtResource("7_dioo0")
+plant_attack = ExtResource("8_6kjta")
+alfy_attack = ExtResource("8_s8wny")
+pigbreak = ExtResource("10_qelfk")
+press_switch = ExtResource("10_c4w46")
+punch = ExtResource("11_xiyk5")
+door_opening = ExtResource("13_ls261")
+button_pressed = ExtResource("14_nhn0b")
+slide_up = ExtResource("15_03rp1")
+item_retrieved = ExtResource("16_hmt8d")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Sounds"
@@ -22,4 +48,28 @@ bus = &"Sounds"
 bus = &"Sounds"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer11" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer12" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"
+
+[node name="AudioStreamPlayer13" type="AudioStreamPlayer" parent="."]
 bus = &"Sounds"

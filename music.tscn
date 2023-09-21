@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdhwd5p50pxun"]
+[gd_scene load_steps=5 format=3 uid="uid://cdhwd5p50pxun"]
 
-[ext_resource type="Script" path="res://Music.gd" id="1_02b4i"]
-[ext_resource type="AudioStream" uid="uid://bj2ck4v5hdbou" path="res://sanctuary.wav" id="2_v17rb"]
-[ext_resource type="AudioStream" uid="uid://bbmku2mga30so" path="res://intro.wav" id="3_7255b"]
+[ext_resource type="Script" path="res://music.gd" id="1_oxbk5"]
+[ext_resource type="AudioStream" uid="uid://nps242sciqdn" path="res://Assets/SOUNDTRACKFINALIZADA.wav" id="2_rwcyb"]
+[ext_resource type="AudioStream" uid="uid://bj2ck4v5hdbou" path="res://sanctuary.wav" id="2_u8wsk"]
+[ext_resource type="AudioStream" uid="uid://b8n2tnmjiocw5" path="res://Assets/MENU.wav" id="3_ckdyy"]
 
 [node name="Music" type="Node"]
 process_mode = 3
-script = ExtResource("1_02b4i")
-main_theme = ExtResource("2_v17rb")
-menu_theme = ExtResource("3_7255b")
+script = ExtResource("1_oxbk5")
+main_theme = ExtResource("2_u8wsk")
+menu_theme = ExtResource("3_ckdyy")
+second_act = ExtResource("2_rwcyb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 bus = &"Music"

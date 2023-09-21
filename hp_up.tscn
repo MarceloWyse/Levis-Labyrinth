@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sjn16ab2hxog" path="res://hp_up-Sheet.png" id="1_n2r4e"]
 [ext_resource type="Script" path="res://hp_up.gd" id="1_t413m"]
-[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="3_m8h6o"]
+[ext_resource type="FontFile" uid="uid://eeishiueafv5" path="res://Assets/8-bit-hud.ttf" id="3_mpbl7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4net"]
 atlas = ExtResource("1_n2r4e")
@@ -37,7 +37,8 @@ animations = [{
 size = Vector2(11.8118, 10.3943)
 
 [sub_resource type="LabelSettings" id="LabelSettings_j5qld"]
-font = ExtResource("3_m8h6o")
+font = ExtResource("3_mpbl7")
+font_size = 6
 
 [node name="HP_UP" type="Node2D"]
 script = ExtResource("1_t413m")

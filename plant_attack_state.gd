@@ -12,6 +12,7 @@ func _ready():
 func enter_state():
 	set_physics_process(true)
 	animator.play("attack")
+	Sound.play(Sound.plant_attack)
 	attack_hitbox.monitoring = true
 	actor.velocity.y -= 35
 	await get_tree().create_timer(0.5).timeout

@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	$Button.hide()
+	Music.play(Music.second_act, 0)
 	var my_tween3 = get_tree().create_tween()
 #	my_tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	my_tween3.tween_property($Label, "modulate", Color(0.14901961386204, 0.43921568989754, 0.55686277151108), 1.0)

@@ -122,7 +122,9 @@ func _on_exit_door_body_entered(body):
 		body.velocity.x = 0
 		body.animated_sprite_2d.play("idle")
 		body.during_animation = true
-		animated_sprite_2d.play("exit_door_open") 
+		animated_sprite_2d.play("exit_door_open")
+		Sound.play(Sound.door_opening) 
+		Music.fade_music(1.2)
 		await get_tree().create_timer(1.2).timeout
 		opened = true
 		get_tree().change_scene_to_file("res://level_two.tscn")

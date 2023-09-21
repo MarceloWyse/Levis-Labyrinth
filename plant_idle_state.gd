@@ -4,8 +4,7 @@ extends State
 @export var animator : AnimatedSprite2D
 @onready var attack_hitbox = $"../../AttackHitbox"
 @export var vision_cast : RayCast2D
-var walk_cont = 0
-var hide_cont = 0
+@onready var lost_sight_timer = $"../../LostSightTimer"
 
 signal to_walk_state
 signal to_hide_state
@@ -14,21 +13,19 @@ func _ready():
 	
 func enter_state():
 	set_physics_process(true)
+	lost_sight_timer.wait_time = 5
 	attack_hitbox.monitoring = false
 	animator.play("idle")
+	await animator.animation_finished
+	lost_sight_timer.start()
 	
 func exit_state():
+	lost_sight_timer.stop()
 	set_physics_process(false)
 	
 func _physics_process(_delta):
-	if not vision_cast.is_colliding():
-		hide_cont += 1
-		walk_cont = 0
 	if vision_cast.is_colliding():
-		hide_cont = 0
-		walk_cont += 1
-	if walk_cont >= 100:
 		to_walk_state.emit()
-	if hide_cont >= 100:
-		to_hide_state.emit()
 
+func _on_lost_sight_timer_timeout():
+		to_hide_state.emit()

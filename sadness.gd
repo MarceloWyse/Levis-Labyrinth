@@ -29,7 +29,6 @@ func _on_stats_no_health():
 	queue_free()
 
 func _on_hurtbox_hurt(_hitbox, damage):
-	stats.health -= damage
 	Sound.play(Sound.hit)
 	enemy_name.get_node("TextureRect/Label").text = "Sadness"
 	enemy_name.visible = true

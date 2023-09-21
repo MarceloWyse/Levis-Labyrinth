@@ -6,3 +6,6 @@ func enter_state():
 	
 func exit_state():
 	pass
+	
+func _physics_process(delta):
+	pass

@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var GHOST_SCENE : PackedScene
 @onready var animation_timer = $AnimationTimer
 @onready var dash_skill = $"../Dash_skill"
+@onready var punch_timer = $PunchTimer
 
 var money : int = 0
 var gravity = 900
@@ -138,12 +139,14 @@ func alfy_attack():
 		alfy.flip_h = false
 ##
 		if Input.is_action_just_pressed("alfy") and $AlfyTimer.time_left == 0:
+			Sound.play(Sound.alfy_attack)
 			animation_player.play("alfy_test_right")
 			$AlfyTimer.start()
 #
 	if animated_sprite_2d.flip_h == true:
 		alfy.flip_h = true
 		if Input.is_action_just_pressed("alfy") and $AlfyTimer.time_left == 0:
+			Sound.play(Sound.alfy_attack)
 			animation_player.play("alfy_test_left")
 			$AlfyTimer.start()
 
@@ -228,6 +231,7 @@ func dash():
 		if Input.is_action_just_pressed("dash") and dash_timer.time_left == 0 and not stairs.climbing and not stairs_2.climbing:
 			dashing = true
 			animated_sprite_2d.play("dash")
+			Sound.play(Sound.airdash)
 			$GhostTimer.start()
 			if animated_sprite_2d.flip_h == false:
 				var my_tween = get_tree().create_tween()
@@ -252,8 +256,10 @@ func fall_from_ledge():
 		animated_sprite_2d.play("fall")
 
 func punch_attack(_delta):
-	if Input.is_action_just_pressed("attack") and not during_animation:
+	if Input.is_action_just_pressed("attack") and not during_animation and punch_timer.is_stopped():
 		punching = true
+		punch_timer.start()
+		Sound.play(Sound.punch)
 		if animated_sprite_2d.flip_h == false:
 			if is_on_floor():
 				velocity = velocity.move_toward(Vector2(10,velocity.y), 100)
@@ -274,6 +280,7 @@ func punch_attack(_delta):
 			animation_player.play("attack_left")
 			await animation_player.animation_finished
 			punching = false
+
 
 func _on_too_far_pop_up_body_entered(_body):
 	during_animation = true

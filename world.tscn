@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://dc57hhagdmg14"]
+[gd_scene load_steps=217 format=3 uid="uid://dc57hhagdmg14"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_q874b"]
 [ext_resource type="PackedScene" uid="uid://dppmqpf64k4ki" path="res://levi.tscn" id="1_w5emb"]
@@ -63,13 +63,17 @@
 [ext_resource type="Texture2D" uid="uid://cmy3o161bpsfl" path="res://Assets/clothing_pile.png" id="50_m2470"]
 [ext_resource type="Texture2D" uid="uid://7qp7pwhy7k6k" path="res://Assets/clock.png" id="51_3i18m"]
 [ext_resource type="Texture2D" uid="uid://b3krmdp3aoygm" path="res://Assets/shelf.png" id="51_aemjf"]
+[ext_resource type="AudioStream" uid="uid://dlbormsd0jy0v" path="res://Sounds/water_drop.wav" id="51_uyhjl"]
+[ext_resource type="Script" path="res://shower2.gd" id="52_70wgg"]
 [ext_resource type="Texture2D" uid="uid://cscjhju6tcxuc" path="res://Assets/bedroom_cabinet.png" id="52_n2q66"]
 [ext_resource type="Texture2D" uid="uid://dlblmwp1wsxh3" path="res://Assets/spikes_sheet.png" id="53_dm6nc"]
 [ext_resource type="PackedScene" uid="uid://pjgm2mcjmuj2" path="res://hitbox.tscn" id="54_83t3r"]
 [ext_resource type="Texture2D" uid="uid://ciqv3a0tbkepy" path="res://Assets/foto_com_primo.png" id="61_rrsax"]
 [ext_resource type="Texture2D" uid="uid://bruq7dusdw4uq" path="res://Assets/dash_skill_Sheet.png" id="67_eo6x5"]
+[ext_resource type="AudioStream" uid="uid://cp2riniyd60w3" path="res://Sounds/spikes.wav" id="68_b72ft"]
 [ext_resource type="Script" path="res://Dash_skill.gd" id="69_jiyjs"]
-[ext_resource type="FontFile" uid="uid://dqm4joa6shrcc" path="res://OldLondon.ttf" id="70_xdwj2"]
+[ext_resource type="PackedScene" uid="uid://dhlfp6o0kndsk" path="res://obsession.tscn" id="70_jw58l"]
+[ext_resource type="Script" path="res://spikes.gd" id="71_3uxku"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2gtwl"]
 font = ExtResource("2_lxyj5")
@@ -873,6 +877,14 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_edq6c"]
+script/source = "extends AnimatedSprite2D
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
+
+func _on_timer_timeout():
+	audio_stream_player_2d.play()
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgvrx"]
 size = Vector2(25.4712, 14.8033)
 
@@ -944,7 +956,8 @@ animations = [{
 radius = 11.3519
 
 [sub_resource type="LabelSettings" id="LabelSettings_70dwe"]
-font = ExtResource("70_xdwj2")
+font = ExtResource("2_lxyj5")
+font_size = 6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdgoy"]
 size = Vector2(15.3681, 13.5862)
@@ -1298,7 +1311,7 @@ position = Vector2(-0.25, 4.75)
 shape = SubResource("RectangleShape2D_20pn7")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundButton"]
-polygon = PackedVector2Array(-19.9717, 9.50037, -6, 3, 6, 3, 20.8638, 9.7854)
+polygon = PackedVector2Array(-19.9717, 9.50037, -6, 3, 6.00002, 3, 20.8638, 9.7854)
 
 [node name="Ball" type="RigidBody2D" parent="."]
 z_index = 5
@@ -1368,7 +1381,7 @@ position = Vector2(-62.336, -287.171)
 [node name="Agorafobia" parent="Walker" instance=ExtResource("10_xfj1e")]
 
 [node name="Walker5" type="Node2D" parent="."]
-position = Vector2(-341.928, -289.822)
+position = Vector2(-342.49, -286.825)
 
 [node name="Agorafobia" parent="Walker5" instance=ExtResource("10_xfj1e")]
 
@@ -1383,8 +1396,8 @@ position = Vector2(-771.434, -623.803)
 [node name="Agorafobia" parent="Walker3" instance=ExtResource("10_xfj1e")]
 position = Vector2(0, 0.630676)
 
-[node name="Levi" parent="." instance=ExtResource("1_w5emb")]
-position = Vector2(-700.882, 131.956)
+[node name="Levi" parent="." groups=["Levi"] instance=ExtResource("1_w5emb")]
+position = Vector2(-485.695, -46.108)
 collision_mask = 161
 platform_on_leave = 2
 
@@ -1397,12 +1410,14 @@ position = Vector2(-932.665, -622.46)
 
 [node name="Agorafobus" parent="Walker2" instance=ExtResource("32_afvkg")]
 
+[node name="Walker6" type="Node2D" parent="."]
+position = Vector2(-334.609, -46.4613)
+
+[node name="Agorafobus" parent="Walker6" instance=ExtResource("32_afvkg")]
+
 [node name="HP_UP" parent="." instance=ExtResource("34_ubdrp")]
 process_mode = 3
 position = Vector2(2.49169, -823.456)
-
-[node name="Sadness" parent="." instance=ExtResource("33_045rd")]
-position = Vector2(-111.905, -60.8397)
 
 [node name="DashCamera" type="Camera2D" parent="."]
 process_mode = 3
@@ -1534,11 +1549,21 @@ position = Vector2(663.827, 34.2992)
 texture = ExtResource("39_lw4ld")
 
 [node name="shower" type="AnimatedSprite2D" parent="1stFloor"]
-position = Vector2(728.966, 34.4825)
+position = Vector2(716.182, -349.573)
 sprite_frames = SubResource("SpriteFrames_e1d68")
 animation = &"shower"
 autoplay = "shower"
 frame_progress = 0.480106
+script = ExtResource("52_70wgg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="1stFloor/shower"]
+stream = ExtResource("51_uyhjl")
+volume_db = 10.0
+max_distance = 200.0
+
+[node name="Timer" type="Timer" parent="1stFloor/shower"]
+wait_time = 1.2
+autostart = true
 
 [node name="bathroom_lamp" type="Sprite2D" parent="1stFloor"]
 position = Vector2(598.235, -30.125)
@@ -1668,6 +1693,8 @@ shape = SubResource("RectangleShape2D_c7y8l")
 
 [node name="Pigbank" parent="2ndFloor" instance=ExtResource("38_npnn8")]
 position = Vector2(-522.08, -42.7873)
+animation = &"pig_break"
+frame_progress = 0.0
 
 [node name="Clock2" type="Sprite2D" parent="2ndFloor"]
 position = Vector2(492.49, -84.9952)
@@ -1743,13 +1770,6 @@ texture = ExtResource("33_q7bsg")
 position = Vector2(656.147, -349.72)
 texture = ExtResource("39_lw4ld")
 
-[node name="shower2" type="AnimatedSprite2D" parent="3rdFloor"]
-position = Vector2(713.157, -349.487)
-sprite_frames = SubResource("SpriteFrames_e1d68")
-animation = &"shower"
-autoplay = "shower"
-frame_progress = 0.818323
-
 [node name="bathroom_lamp4" type="Sprite2D" parent="3rdFloor"]
 position = Vector2(599.431, -429.414)
 texture = ExtResource("40_mv3yw")
@@ -1771,7 +1791,8 @@ texture = ExtResource("28_6v6tu")
 position = Vector2(-223.981, -290.398)
 sprite_frames = SubResource("SpriteFrames_qd4pe")
 autoplay = "default"
-frame_progress = 0.200128
+frame_progress = 0.741462
+script = SubResource("GDScript_edq6c")
 
 [node name="Hitbox" parent="3rdFloor/Spikes" instance=ExtResource("54_83t3r")]
 collision_layer = 0
@@ -1781,11 +1802,23 @@ collision_mask = 8
 position = Vector2(-0.168579, 7.20886)
 shape = SubResource("RectangleShape2D_pgvrx")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="3rdFloor/Spikes"]
+stream = ExtResource("68_b72ft")
+volume_db = 10.0
+autoplay = true
+max_distance = 200.0
+bus = &"Sounds"
+
+[node name="Timer" type="Timer" parent="3rdFloor/Spikes"]
+wait_time = 0.8
+autostart = true
+
 [node name="Spikes2" type="AnimatedSprite2D" parent="3rdFloor"]
 position = Vector2(-158.055, -290.101)
 sprite_frames = SubResource("SpriteFrames_qd4pe")
 autoplay = "default"
-frame_progress = 0.359211
+frame_progress = 0.857505
+script = ExtResource("71_3uxku")
 
 [node name="Hitbox" parent="3rdFloor/Spikes2" instance=ExtResource("54_83t3r")]
 collision_layer = 0
@@ -1795,9 +1828,35 @@ collision_mask = 8
 position = Vector2(0.0404816, 7.02148)
 shape = SubResource("RectangleShape2D_pgvrx")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="3rdFloor/Spikes2"]
+stream = ExtResource("68_b72ft")
+bus = &"Sounds"
+
+[node name="Timer" type="Timer" parent="3rdFloor/Spikes2"]
+wait_time = 0.8
+autostart = true
+
 [node name="Clock" type="Sprite2D" parent="3rdFloor"]
 position = Vector2(-784.576, -811.86)
 texture = ExtResource("51_3i18m")
+
+[node name="shower2" type="AnimatedSprite2D" parent="3rdFloor"]
+position = Vector2(728.91, 34.2007)
+sprite_frames = SubResource("SpriteFrames_e1d68")
+animation = &"shower"
+autoplay = "shower"
+frame_progress = 0.480106
+script = ExtResource("52_70wgg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="3rdFloor/shower2"]
+stream = ExtResource("51_uyhjl")
+volume_db = 10.0
+max_distance = 200.0
+bus = &"Sounds"
+
+[node name="Timer" type="Timer" parent="3rdFloor/shower2"]
+wait_time = 1.2
+autostart = true
 
 [node name="Dash_skill" type="AnimatedSprite2D" parent="."]
 process_mode = 3
@@ -1879,7 +1938,7 @@ position = Vector2(10.0252, -38.5405)
 shape = SubResource("RectangleShape2D_8m2im")
 
 [node name="FightPopUp" type="Area2D" parent="Dialogues"]
-position = Vector2(29.336, -59.9896)
+position = Vector2(-239.36, 131.333)
 collision_layer = 0
 collision_mask = 2
 
@@ -1896,6 +1955,27 @@ collision_mask = 2
 position = Vector2(9.93201, 42.1357)
 shape = SubResource("RectangleShape2D_2g07c")
 
+[node name="Sadness" parent="." instance=ExtResource("33_045rd")]
+position = Vector2(136.417, -63.5312)
+
+[node name="Sadness2" parent="." instance=ExtResource("33_045rd")]
+position = Vector2(-30.6441, -63.5312)
+
+[node name="Obsession" parent="." instance=ExtResource("70_jw58l")]
+z_index = 10
+position = Vector2(-0.940883, 123.898)
+collision_layer = 4
+
+[node name="Obsession2" parent="." instance=ExtResource("70_jw58l")]
+z_index = 10
+position = Vector2(308.161, 124.346)
+collision_layer = 4
+
+[node name="Obsession3" parent="." instance=ExtResource("70_jw58l")]
+z_index = 10
+position = Vector2(-297.248, -757.674)
+collision_layer = 4
+
 [connection signal="timeout" from="PopUpAlfy/PopUpTimer" to="." method="_on_pop_up_timer_timeout"]
 [connection signal="timeout" from="PopUpLevi/PopUpTimer2" to="." method="_on_pop_up_timer_2_timeout"]
 [connection signal="body_entered" from="ValuableItems/Dstation" to="." method="_on_dstation_body_entered"]
@@ -1911,8 +1991,11 @@ shape = SubResource("RectangleShape2D_2g07c")
 [connection signal="body_entered" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_entered"]
 [connection signal="body_exited" from="GroundButton/Button" to="GroundButton/Button" method="_on_body_exited"]
 [connection signal="timeout" from="Levi/AnimationTimer" to="Levi" method="_on_animation_timer_timeout"]
+[connection signal="timeout" from="1stFloor/shower/Timer" to="1stFloor/shower" method="_on_timer_timeout"]
 [connection signal="body_entered" from="1stFloor/drinking_fountain/Area2D" to="1stFloor/drinking_fountain" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="2ndFloor/drinking_fountain2/Area2D" to="2ndFloor/drinking_fountain2" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="3rdFloor/Spikes/Timer" to="3rdFloor/Spikes" method="_on_timer_timeout"]
+[connection signal="timeout" from="3rdFloor/shower2/Timer" to="3rdFloor/shower2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Dash_skill/DashArea" to="Dash_skill" method="_on_dash_area_body_entered"]
 [connection signal="body_entered" from="Dialogues/LookForTheExit" to="." method="_on_look_for_the_exit_body_entered"]
 [connection signal="body_entered" from="Dialogues/LeverPopUp" to="." method="_on_lever_pop_up_body_entered"]
@@ -1926,3 +2009,4 @@ shape = SubResource("RectangleShape2D_2g07c")
 
 [editable path="MovingPlatform2"]
 [editable path="MovingPlatform3"]
+[editable path="Sadness2"]

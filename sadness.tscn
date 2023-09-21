@@ -294,7 +294,7 @@ frame_progress = 1.0
 flip_h = true
 
 [node name="Stats" parent="." instance=ExtResource("3_ers66")]
-max_health = 5
+max_health = 10
 
 [node name="Hitbox" parent="." instance=ExtResource("4_5xjmi")]
 collision_layer = 0
@@ -336,7 +336,7 @@ shape = SubResource("RectangleShape2D_ijdb7")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("11_oa0ke")
-state = NodePath("IdleState")
+state = NodePath("HideState")
 
 [node name="IdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "vision_cast")]
 script = ExtResource("12_wpd4y")
@@ -380,8 +380,9 @@ target_position = Vector2(128, 1)
 collision_mask = 2
 
 [node name="LostSightTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="LostSightTimer" to="FiniteStateMachine/IdleState" method="_on_lost_sight_timer_timeout"]

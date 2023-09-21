@@ -16,9 +16,11 @@ func _physics_process(_delta):
 	if overlaps_body(levi):
 		if Input.is_action_just_pressed("dialogue"):
 			lever.play("lever")
+			Sound.play(Sound.press_switch)
 			await get_tree().create_timer(0.5).timeout
 			lever_collision.queue_free()
 			door_up.get_node("slider_door_up").play("move_door")
+			Sound.play(Sound.slide_up)
 			doorup_collision.queue_free()
 
 func _on_body_entered(_body):

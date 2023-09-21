@@ -18,6 +18,7 @@ func _on_body_entered(body):
 	if body is Ball or body is Player:
 		if not pressed:
 			button_press.play("press")
+			Sound.play(Sound.button_pressed)
 			emit_signal("disable_tilemap")
 		if body is Ball:
 			emit_signal("disable_tilemap")

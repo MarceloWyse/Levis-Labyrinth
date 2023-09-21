@@ -7,6 +7,7 @@ func _ready():
 	label.visible = false
 
 func _on_area_2d_body_entered(_body):
+	Sound.play(Sound.lifemax)
 	dialogue.playing = true
 	label.visible = true
 	PlayerStats.max_health += 5
