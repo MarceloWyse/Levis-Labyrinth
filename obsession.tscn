@@ -182,7 +182,7 @@ shape = SubResource("CapsuleShape2D_arac3")
 debug_color = Color(0.701961, 0.486275, 0.235294, 0.419608)
 
 [node name="Stats" parent="." instance=ExtResource("9_76mma")]
-max_health = 12
+max_health = 8
 
 [node name="Hurtbox" parent="." instance=ExtResource("10_s2c4l")]
 collision_layer = 16
